@@ -1,7 +1,10 @@
 ﻿@model TraversalCore.Models.UserRegisterViewModel
+
 @{
-    ViewData["Title"] = "SingUp";
+    ViewData["Title"] = "SingIn";
 }
+
+
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -24,7 +27,6 @@
 </head>
 
 <body>
-    <!-- /login-section -->
     <section class="w3l-login-6">
         <div class="login-hny">
             <div class="form-content">
@@ -49,29 +51,20 @@
                     </div>
                     <form action="#" method="post" class="signin-form">
                         <div class="form-input">
-                            <label>Ad Soyad</label>
-                            <input type="text"  asp-for="Name" required />
-                            <span asp-validation-for="Name" class="text-danger"></span>
-                        </div>
-                        <div class="form-input">
                             <label>Kullanıcı Adı</label>
-                            <input type="text"  asp-for="UserName" required />
+                            <input type="text" asp-for="UserName" required />
                         </div>
                         <div class="form-input">
                             <label>Email</label>
-                            <input type="email"  asp-for="Mail" required />
+                            <input type="email" asp-for="Mail" required />
                         </div>
                         <div class="form-input">
                             <label>Şifre</label>
                             <input type="password" asp-for="Password" placeholder="" required />
                         </div>
-                        <div class="form-input">
-                            <label>Şifre Tekrar</label>
-                            <input type="password" asp-for="ConfirmPassword" placeholder="" required />
-                        </div>
 
                         <label class="container">
-                            Şartları Okudum Kabul Ediyorum 
+                            Şartları Okudum Kabul Ediyorum
                             <input type="checkbox">
                             <span class="checkmark"></span>
                         </label>
@@ -79,7 +72,7 @@
                     </form>
                     <div class="copy-right text-center">
                         <p>
-                            @DateTime.Now 
+                            @DateTime.Now
                         </p>
                     </div>
                 </div>
@@ -92,4 +85,5 @@
 </body>
 
 </html>
+
 
