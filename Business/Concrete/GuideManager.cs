@@ -29,9 +29,9 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<List<Guide>> GetAll()
+        public List<Guide> GetAll()
         {
-            return new SuccessDataResult<List<Guide>>(_guideDal.GetAll());
+            return _guideDal.GetAll();
         }
 
         public IDataResult<List<Guide>> GetById(int id)
@@ -43,6 +43,11 @@ namespace Business.Concrete
         {
             _guideDal.Update(guide);
             return new SuccessResult();
+        }
+
+        List<Guide> IGuideService.GetById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

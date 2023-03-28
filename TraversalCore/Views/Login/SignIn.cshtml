@@ -1,4 +1,4 @@
-﻿@model TraversalCore.Models.UserRegisterViewModel
+﻿@model TraversalCore.Models.UserSignInViewModel
 
 @{
     ViewData["Title"] = "SingIn";
@@ -47,20 +47,16 @@
                 </div>
                 <div class="form-left" style="position:relative;top:-50px;">
                     <div class="middle">
-                        <h4>Kayıt OL</h4>
+                        <h4>Giriş Yap</h4>
                     </div>
                     <form action="#" method="post" class="signin-form">
                         <div class="form-input">
                             <label>Kullanıcı Adı</label>
-                            <input type="text" asp-for="UserName" required />
-                        </div>
-                        <div class="form-input">
-                            <label>Email</label>
-                            <input type="email" asp-for="Mail" required />
+                            <input type="text" asp-for="username" required />
                         </div>
                         <div class="form-input">
                             <label>Şifre</label>
-                            <input type="password" asp-for="Password" placeholder="" required />
+                            <input type="password" asp-for="password" placeholder="" required />
                         </div>
 
                         <label class="container">

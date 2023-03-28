@@ -10,10 +10,10 @@ namespace Business.Abstract
 {
     public interface IGuideService
     {
-        IDataResult<List<Guide>> GetAll();
+        List<Guide> GetAll();
         IResult Add(Guide guide);
         IResult Update(Guide guide);
         IResult Delete(Guide guide);
-        IDataResult<List<Guide>> GetById(int id);
+        List<Guide> GetById(int id);
     }
 }
