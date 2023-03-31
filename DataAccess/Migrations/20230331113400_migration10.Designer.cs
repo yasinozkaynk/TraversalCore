@@ -4,14 +4,16 @@ using DataAccess.Concrete.EntityFremawork.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230331113400_migration10")]
+    partial class migration10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -274,9 +276,6 @@ namespace DataAccess.Migrations
                     b.Property<string>("FirstImage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GuideID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -287,8 +286,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("DestinationID");
-
-                    b.HasIndex("GuideID");
 
                     b.ToTable("Destinations");
                 });
@@ -325,12 +322,6 @@ namespace DataAccess.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GuideListImage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
@@ -559,13 +550,6 @@ namespace DataAccess.Migrations
                     b.Navigation("Destination");
                 });
 
-            modelBuilder.Entity("Entity.Concrete.Destination", b =>
-                {
-                    b.HasOne("Entity.Concrete.Guide", null)
-                        .WithMany("Destinations")
-                        .HasForeignKey("GuideID");
-                });
-
             modelBuilder.Entity("Entity.Concrete.Reservation", b =>
                 {
                     b.HasOne("Core.Entities.Concrete.AppUser", "AppUser")
@@ -639,11 +623,6 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entity.Concrete.Destination", b =>
                 {
                     b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("Entity.Concrete.Guide", b =>
-                {
-                    b.Navigation("Destinations");
                 });
 #pragma warning restore 612, 618
         }

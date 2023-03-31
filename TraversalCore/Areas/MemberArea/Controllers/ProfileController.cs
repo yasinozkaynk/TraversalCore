@@ -13,7 +13,6 @@ namespace TraversalCore.Areas.MemberArea.Controllers
 {
     [Area("MemberArea")]
     [Route("MemberArea/[controller]/[action]")]
-    [AllowAnonymous]
     public class ProfileController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -32,7 +31,6 @@ namespace TraversalCore.Areas.MemberArea.Controllers
             userEditViewModel.surname = values.SurName;
             userEditViewModel.phonenumber = values.PhoneNumber;
             userEditViewModel.mail = values.Email;
-            ViewBag.v1 = userEditViewModel.password;
             return View(userEditViewModel);
         }
 

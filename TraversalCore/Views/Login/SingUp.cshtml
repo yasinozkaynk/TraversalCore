@@ -50,16 +50,21 @@
                     <form action="#" method="post" class="signin-form">
                         <div class="form-input">
                             <label>Ad Soyad</label>
-                            <input type="text"  asp-for="Name" required />
+                            <input type="text" asp-for="Name" required />
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                         <div class="form-input">
+                            <label>Ad Soyad</label>
+                            <input type="text" asp-for="Surname" required />
+                            <span asp-validation-for="Surname" class="text-danger"></span>
+                        </div>
+                        <div class="form-input">
                             <label>Kullanıcı Adı</label>
-                            <input type="text"  asp-for="UserName" required />
+                            <input type="text" asp-for="UserName" required />
                         </div>
                         <div class="form-input">
                             <label>Email</label>
-                            <input type="email"  asp-for="Mail" required />
+                            <input type="email" asp-for="Mail" required />
                         </div>
                         <div class="form-input">
                             <label>Şifre</label>
@@ -71,11 +76,11 @@
                         </div>
 
                         <label class="container">
-                            Şartları Okudum Kabul Ediyorum 
+                            Şartları Okudum Kabul Ediyorum
                             <input type="checkbox">
                             <span class="checkmark"></span>
                         </label>
-                        <button class="btn">Kayıt Ol</button>
+                        <button class="btn" href="/Si">Kayıt Ol</button>
                     </form>
                     <div class="copy-right text-center">
                         <p>

@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 namespace TraversalCore.Areas.MemberArea.Controllers
 {
     [Area("MemberArea")]
-    [AllowAnonymous]
-
     public class DestinationController : Controller
     {
         IDestinationService _destinationService;

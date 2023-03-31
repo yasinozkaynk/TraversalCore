@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 namespace TraversalCore.Admin.Controllers
 {
     [AllowAnonymous]
-
     public class UserController : Controller
     {
         IAppUserService _appUserService;
+        IReservationService _reservationService;
 
-        public UserController(IAppUserService appUserService)
+        public UserController(IAppUserService appUserService, IReservationService reservationService)
         {
             _appUserService = appUserService;
+            _reservationService = reservationService;
         }
 
         public IActionResult Index()
@@ -31,25 +32,15 @@ namespace TraversalCore.Admin.Controllers
             _appUserService.Delete(values);
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        public IActionResult Update(int id)
-        {
-            var values = _appUserService.GetById(id);
-            return View(values);
-        }
-
-        [HttpPost]
-        public IActionResult Update(AppUser appUser)
-        {
-            _appUserService.Update(appUser);
-            return RedirectToAction("Index");
-        }
-
         public IActionResult CommentUser()
         {
             _appUserService.GetAll();
             return View();
         }
-
+        public IActionResult ReservationUser(int id)
+        {
+            var values = _reservationService.GetListWithReservationByAccepted(id);
+            return View(values);
+        }
     }
 }

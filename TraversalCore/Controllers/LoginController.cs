@@ -55,12 +55,12 @@ namespace TraversalCore.UI.Controllers
            return View();
         }
         [HttpGet]
-        public IActionResult SignIn()
+        public IActionResult SingIn()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> SignIn(UserSignInViewModel p)
+        public async Task<IActionResult> SingIn(UserSignInViewModel p)
         {
             if (ModelState.IsValid)
             {
