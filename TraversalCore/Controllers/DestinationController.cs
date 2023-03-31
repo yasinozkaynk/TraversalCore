@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace TraversalCore.UI.Controllers
 {
+    [AllowAnonymous]
+
     public class DestinationController : Controller
     {
         IDestinationService _destinationService;

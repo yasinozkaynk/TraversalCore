@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TraversalCore.UI.Controllers
+namespace TraversalCore.Admin.Controllers
 {
     [AllowAnonymous]
-    public class Deafault : Controller
+
+    public class DashboardController : Controller
     {
         public IActionResult Index()
         {

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entity.Concrete;
 using System;
@@ -32,13 +33,32 @@ namespace Business.Concrete
         {
             return _commentDal.GetAll();
         }
+
+        public Comment GetById(int id)
+        {
+             return _commentDal.Get(x=>x.CommentID==id);
+        }
+
         public List<Comment> GetDestinationById(int id)
         {
             return _commentDal.GetAll(x=>x.DestinationID==id);
         }
+
+        public List<Comment> TGetListCommentWithDestination()
+        {
+            return _commentDal.GetListCommentWithDestination();
+        }
+
+        public List<Comment> TGetListCommentWithDestinationAndUser(int id)
+        {
+            return _commentDal.GetListCommentWithDestinationAndUser(id);
+        }
+
         public void Update(Comment comment)
         {
             _commentDal.Update(comment);
         }
+
+      
     }
 }

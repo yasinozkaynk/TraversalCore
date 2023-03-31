@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <Folder Include="Areas\MemberArea\Data\" />
+    <Folder Include="Views\Deafault\" />
+    <Folder Include="wwwroot\soft-ui-dashboard\pages\" />
   </ItemGroup>
 
 </Project>

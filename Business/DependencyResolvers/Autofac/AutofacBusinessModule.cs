@@ -18,7 +18,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<AboutManager>().As<IAboutService>().SingleInstance();
             builder.RegisterType<EfAboutDal>().As<IAboutDal>().SingleInstance();
 
-            builder.RegisterType<DestinationManager>().As<IDestinationService>().SingleInstance();
+            builder.RegisterType<DestinationManager>().As<IDestinationService>().SingleInstance(); 
             builder.RegisterType<EfDestinationDal>().As<IDestinationDal>().SingleInstance();
 
             builder.RegisterType<FeatureManager>().As<IFeatureService>().SingleInstance();
@@ -35,6 +35,9 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<GuideManager>().As<IGuideService>().SingleInstance();
             builder.RegisterType<EfGuideDal>().As<IGuideDal>().SingleInstance();
+
+            builder.RegisterType<AppUserManager>().As<IAppUserService>().SingleInstance();
+            builder.RegisterType<EfAppUserDal>().As<IAppUserDal>().SingleInstance();
         }
     }
 }

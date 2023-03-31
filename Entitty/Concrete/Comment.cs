@@ -10,7 +10,6 @@ namespace Entity.Concrete
 {
     public class Comment:IEntity
     {
-        [Key]
         public int CommentID { get; set; }
         public string CommentUser { get; set; }
         public DateTime CommentDate { get; set; }
