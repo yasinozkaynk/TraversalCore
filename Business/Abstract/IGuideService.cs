@@ -14,6 +14,8 @@ namespace Business.Abstract
         IResult Add(Guide guide);
         IResult Update(Guide guide);
         IResult Delete(Guide guide);
-        List<Guide> GetById(int id);
+        Guide GetById(int id);
+        void ChangeToFalseByGuide(int id);
+        void ChangeToTrueByGuide(int id);
     }
 }

@@ -23,6 +23,16 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        public void ChangeToFalseByGuide(int id)
+        {
+            _guideDal.ChangeToFalseByGuide(id);
+        }
+
+        public void ChangeToTrueByGuide(int id)
+        {
+            _guideDal.ChangeToTrueByGuide(id);
+        }
+
         public IResult Delete(Guide guide)
         {
             _guideDal.Delete(guide);
@@ -34,9 +44,9 @@ namespace Business.Concrete
             return _guideDal.GetAll();
         }
 
-        public IDataResult<List<Guide>> GetById(int id)
+        public Guide GetById(int id)
         {
-            return new SuccessDataResult<List<Guide>>(_guideDal.GetAll(x=>x.GuideID==id));
+           return _guideDal.Get(x=>x.GuideID==id);
         }
 
         public IResult Update(Guide guide)
@@ -45,9 +55,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        List<Guide> IGuideService.GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
