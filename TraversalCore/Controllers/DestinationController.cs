@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 namespace TraversalCore.UI.Controllers
 {
     [AllowAnonymous]
-
     public class DestinationController : Controller
     {
         IDestinationService _destinationService;

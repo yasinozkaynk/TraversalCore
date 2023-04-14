@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,16 @@ namespace TraversalCoreProje
         {
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+            services.AddHttpClient();
+          
+
+            services.AddLogging(x =>
+            {
+                x.ClearProviders();
+                x.SetMinimumLevel(LogLevel.Debug);
+                x.AddDebug();
+            });
+
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()

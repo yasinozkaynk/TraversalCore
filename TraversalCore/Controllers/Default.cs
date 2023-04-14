@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace TraversalCore.UI.Controllers
 {
     [AllowAnonymous]
-    public class Deafault : Controller
+    public class Default : Controller
     {
         public IActionResult Index()
         {

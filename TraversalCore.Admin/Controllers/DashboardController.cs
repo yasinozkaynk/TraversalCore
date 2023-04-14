@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace TraversalCore.Admin.Controllers
 {
     [AllowAnonymous]
-
     public class DashboardController : Controller
     {
         public IActionResult Index()

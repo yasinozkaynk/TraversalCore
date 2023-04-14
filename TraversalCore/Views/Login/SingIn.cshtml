@@ -1,85 +1,52 @@
 ﻿@model TraversalCore.Models.UserSignInViewModel
 
 @{
-    ViewData["Title"] = "SingIn";
+    ViewData["Title"] = "SıngIn";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+
 }
 
+<link href="~/css/site.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-
-<!DOCTYPE html>
-<html lang="zxx">
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8" />
-    <meta name="keywords"
-          content="Invent Signup Form Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-    <link href="~/web/css/style.css" rel="stylesheet" />
-</head>
-
-<body>
-    <section class="w3l-login-6">
-        <div class="login-hny">
-            <div class="form-content">
-                <div class="form-right">
-                    <div class="overlay">
-                        <div class="grid-info-form">
-                            <h5>Rezervazyon için</h5>
-                            <h3>Hesap Oluşturun </h3>
-                            <p>
-                                Birbirinden değerli rehberler eşliğinde Akdeniz ülkerinin sıcaklığını,
-                                güzel ülkemizin Kapodokya'dan Sürmene'ye, Ölüdeniz'den Asos'a, Balkan turundan Mısır Çöllerine kadar bir tık uzaktayız ,
-                                Seyahetlerimize katılmak için hemen kayıt olun...
-                            </p>
-                            <a href="/Login/SingUp" class="read-more-1 btn">Hadi Başlayalım</a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="form-left" style="position:relative;top:-50px;">
-                    <div class="middle">
-                        <h4>Giriş Yap</h4>
-                    </div>
-                    <form action="#" method="post" class="signin-form">
-                        <div class="form-input">
-                            <label>Kullanıcı Adı</label>
-                            <input type="text" asp-for="username" required />
-                        </div>
-                        <div class="form-input">
-                            <label>Şifre</label>
-                            <input type="password" asp-for="password" placeholder="" required />
-                        </div>
-
-                        <label class="container">
-                            Şartları Okudum Kabul Ediyorum
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        <button class="btn">Giriş Yap</button>
-                    </form>
-                    <div class="copy-right text-center">
-                        <p>
-                            @DateTime.Now
-                        </p>
-                    </div>
-                </div>
-
+<div class="overlay">
+    <form class="form2" method="post" >
+        <div class="con">
+            <header class="header ">
+                <h2>Giriş Yap</h2>
+                <br />
+                <p>Kullanıcı adınızı ve şifrenizi kullanarak buradan giriş yapın</p>
+            </header>
+            <div class="field-set">
+                <span class="input-item">
+                    <i class="fa fa-user-circle"></i>
+                </span>
+                <input class="form-input" id="txt-input" type="text"  asp-for="username"  placeholder="Kullanıcı Adı" required>
+                <br>
+                <span class="input-item">
+                    <i class="fa fa-key"></i>
+                </span>
+                <input class="form-input" type="password" asp-for="password" placeholder="Şifre" id="pwd" required>
+                <span>
+                    <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
+                </span>
+                <br>
+                <button class="btn btn-style btn-secondary"> Giriş Yap </button>
+            </div>
+            <div class="other">
+                <button class="btn submits frgt-pass">Şifre Yenile</button>
+                <button  class="btn submits sign-up">
+                    <a href="/Login/SingUp/">Kayıt Ol</a> 
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </button>
             </div>
 
         </div>
-    </section>
-    <!-- //login-section -->
-</body>
 
-</html>
-
-
+    </form>
+</div>

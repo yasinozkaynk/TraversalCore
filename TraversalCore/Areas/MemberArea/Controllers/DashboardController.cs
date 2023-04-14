@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace TraversalCore.Areas.MemberArea.Controllers
 {
     [Area("MemberArea")]
+    [AllowAnonymous]
     public class DashboardController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

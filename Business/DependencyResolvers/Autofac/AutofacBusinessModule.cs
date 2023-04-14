@@ -41,6 +41,9 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<ReservationManager>().As<IReservationService>().SingleInstance();
             builder.RegisterType<EfReservationDal>().As<IReservationDal>().SingleInstance();
+
+            builder.RegisterType<ContactUsManager>().As<IContactUsService>().SingleInstance();
+            builder.RegisterType<EfContactUsDal>().As<IContactUsDal>().SingleInstance();
         }
     }
 }
