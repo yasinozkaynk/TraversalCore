@@ -33,20 +33,20 @@ namespace TraversalCoreProje
             services.AddHttpClient();
           
 
-            services.AddLogging(x =>
-            {
-                x.ClearProviders();
-                x.SetMinimumLevel(LogLevel.Debug);
-                x.AddDebug();
-            });
+            //services.AddLogging(x =>
+            //{
+            //    x.ClearProviders();
+            //    x.SetMinimumLevel(LogLevel.Debug);
+            //    x.AddDebug();
+            //});
 
-            services.AddMvc(config =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build();
-                config.Filters.Add(new AuthorizeFilter(policy));
-            });
+            //services.AddMvc(config =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder()
+            //    .RequireAuthenticatedUser()
+            //    .Build();
+            //    config.Filters.Add(new AuthorizeFilter(policy));
+            //});
             services.AddMvc();
             services.AddControllersWithViews();
         }
@@ -66,10 +66,10 @@ namespace TraversalCoreProje
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
+           // app.UseAuthentication();
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

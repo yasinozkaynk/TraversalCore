@@ -3,73 +3,27 @@
     Layout = null;
 }
 
-<script src="~/Traversal-Liberty/assets/js/jquery-3.3.1.min.js"></script>
-<script src="~/Traversal-Liberty/assets/js/theme-change.js"></script>
-<!--/slider-js-->
-<script src="~/Traversal-Liberty/assets/js/jquery.min.js"></script>
-<script src="~/Traversal-Liberty/assets/js/modernizr-2.6.2.min.js"></script>
-<script src="~/Traversal-Liberty/assets/js/jquery.zoomslider.min.js"></script>
-<!--//slider-js-->
-<script src="~/Traversal-Liberty/assets/js/owl.carousel.js"></script>
-<!-- script for tesimonials carousel slider -->
-<script>
-    $(document).ready(function () {
-        $("#owl-demo1").owlCarousel({
-            loop: true,
-            margin: 20,
-            nav: false,
-            responsiveClass: true,
-            responsive: {
-                0: {
-                    items: 1,
-                    nav: false
-                },
-                736: {
-                    items: 1,
-                    nav: false
-                },
-                1000: {
-                    items: 1,
-                    nav: false,
-                    loop: true
-                }
-            }
-        })
-    })
-</script>
-<!-- //script for tesimonials carousel slider -->
-<!-- stats number counter-->
-<script src="~/Traversal-Liberty/assets/js/jquery.waypoints.min.js"></script>
-<script src="~/Traversal-Liberty/assets/js/jquery.countup.js"></script>
-<script>
-    $('.counter').countUp();
-</script>
-<!-- //stats number counter -->
-<!--/MENU-JS-->
-<script>
-    $(window).on("scroll", function () {
-        var scroll = $(window).scrollTop();
-        if (scroll >= 80) {
-            $("#site-header").addClass("nav-fixed");
-        } else {
-            $("#site-header").removeClass("nav-fixed");
-        }
-    });
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-        $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-        if ($(window).width() > 991) {
-            $("header").removeClass("active");
-        }
-        $(window).on("resize", function () {
-            if ($(window).width() > 991) {
-                $("header").removeClass("active");
-            }
-        });
-    });
-</script>
-<!--//MENU-JS-->
 
-<script src="~/Traversal-Liberty/assets/js/bootstrap.min.js"></script>
+<!-- Main jQuery -->
+<script src="~/aviato-main/source/plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.1 -->
+<script src="~/aviato-main/source/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- Bootstrap Touchpin -->
+<script src="~/aviato-main/source/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+<!-- Instagram Feed Js -->
+<script src="~/aviato-main/source/plugins/instafeed/instafeed.min.js"></script>
+<!-- Video Lightbox Plugin -->
+<script src="~/aviato-main/source/plugins/ekko-lightbox/dist/ekko-lightbox.min.js"></script>
+<!-- Count Down Js -->
+<script src="~/aviato-main/source/plugins/syo-timer/build/jquery.syotimer.min.js"></script>
+
+<!-- slick Carousel -->
+<script src="~/aviato-main/source/plugins/slick/slick.min.js"></script>
+<script src="~/aviato-main/source/plugins/slick/slick-animation.min.js"></script>
+
+<!-- Google Mapl -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+<script type="~/aviato-main/source/text/javascript" src="plugins/google-map/gmap.js"></script>
+
+<!-- Main Js File -->
+<script src="~/aviato-main/source/js/script.js"></script>

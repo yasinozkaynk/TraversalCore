@@ -37,13 +37,13 @@ namespace TraversalCore.Admin
 
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
-            services.AddMvc(config =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build();
-                config.Filters.Add(new AuthorizeFilter(policy));
-            });
+            //services.AddMvc(config =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder()
+            //    .RequireAuthenticatedUser()
+            //    .Build();
+            //    config.Filters.Add(new AuthorizeFilter(policy));
+            //});
             services.AddMvc();
             services.AddControllersWithViews();
             services.AddHttpClient();
@@ -65,10 +65,10 @@ namespace TraversalCore.Admin
             app.UseStatusCodePagesWithReExecute("/ErrorPage/Eror404", "?code={0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
+           // app.UseAuthentication();
             app.UseRouting();
 
-            app.UseAuthorization();
+           // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

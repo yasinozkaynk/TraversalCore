@@ -18,7 +18,8 @@ namespace TraversalCore.UI.ViewComponets.Default
 
         public IViewComponentResult Invoke()
         {
-            return View();
+            var result = _featureService.GetList();
+            return View(result);
         }
     }
 }

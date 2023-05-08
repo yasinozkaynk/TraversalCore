@@ -2,8 +2,7 @@
 @model List<Comment>
 
 
-<div class="comments mt-5">
-    <h4 class="side-title ">Yorumlar (2)</h4>
+@*<div class="comments mt-5">
     @foreach (var item in Model)
     {
         <div class="media mt-4">
@@ -14,8 +13,8 @@
 
                 <ul class="time-rply mb-2">
                     <li>
-                        <a href="#URL" class="name mt-0 mb-2 d-block">@item.CommentUser</a>
-                        @item.CommentDate
+                        <a href="#URL" class="name mt-0 mb-2 d-block"></a>
+                   
 
                     </li>
                     <li class="reply-last">
@@ -25,9 +24,39 @@
                     </li>
                 </ul>
                 <p>
-                   @item.CommentContent
                 </p>
             </div>
         </div>
     }
+</div>*@
+<div id="reviews" class="tab-pane fade">
+    <div class="post-comments">
+        @foreach (var item in Model)
+        {
+            <ul class="media-list comments-list m-bot-50 clearlist">
+                <li class="media">
+
+                    <a class="pull-left" href="#!">
+                        <img class="media-object comment-avatar" src="https://w7.pngwing.com/pngs/741/68/png-transparent-user-computer-icons-user-miscellaneous-cdr-rectangle-thumbnail.png" alt="" width="50" height="50" />
+                    </a>
+
+                    <div class="media-body">
+                        <div class="comment-info">
+                            <h4 class="comment-author">
+                                <a href="#!">@item.CommentUser</a>
+
+                            </h4>
+                            <time datetime="2013-04-06T13:53">@item.CommentDate</time>
+                            <a class="comment-button" href="#!"><i class="tf-ion-chatbubbles"></i>Reply</a>
+                        </div>
+
+                        <p>
+                            @item.CommentContent
+                        </p>
+                    </div>
+
+                </li>
+            </ul>
+        }
+        </div>
 </div>
