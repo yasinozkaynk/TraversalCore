@@ -28,14 +28,29 @@ namespace TraversalCore.Areas.MemberArea.Controllers
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
             UserEditViewModel userEditViewModel = new UserEditViewModel();
             userEditViewModel.name = values.Name;
+            userEditViewModel.Id = values.Id;
             userEditViewModel.surname = values.SurName;
             userEditViewModel.phonenumber = values.PhoneNumber;
             userEditViewModel.mail = values.Email;
+            userEditViewModel.imageurl = values.ImageUrl;
+            return View(userEditViewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Update()
+        {
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            UserEditViewModel userEditViewModel = new UserEditViewModel();
+            userEditViewModel.name = values.Name;
+            userEditViewModel.surname = values.SurName;
+            userEditViewModel.phonenumber = values.PhoneNumber;
+            userEditViewModel.mail = values.Email;
+            userEditViewModel.imageurl = values.ImageUrl;
             return View(userEditViewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(UserEditViewModel p)
+        public async Task<IActionResult> Update(UserEditViewModel p)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             if (p.Image != null)

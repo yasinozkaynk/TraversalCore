@@ -1,36 +1,35 @@
 ﻿@model TraversalCore.Areas.MemberArea.Models.UserEditViewModel
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h1>Profil Düzenleme Sayfası</h1>
-@ViewBag.v1
-<form method="post" enctype="multipart/form-data">
-    @Html.Label("Adınız")
-    <input type="text" asp-for="Name" class="form-control" />
-    <br />
-    @Html.Label("Soyadınız")
-    <input type="text" asp-for="Surname" class="form-control" />
-    <br />
-    @Html.Label("Mail Adresiniz")
-    <input type="text" asp-for="mail" class="form-control" />
-    <br />
-    @Html.Label("Şifreniz")
-    <input type="text" asp-for="password" class="form-control" />
-    <br />
-    @Html.Label("Şifre Tekrar")
-    <input type="text" asp-for="confirmpassword" class="form-control" />
-    <br />
-    @Html.Label("Telefon Numarası")
-    <input type="text" asp-for="phonenumber" class="form-control" />
-    <br />
-    <div class="form-group">
-        <label>Resim Seçin</label>
-        <input type="file" asp-for="Image" />
+<section class="user-dashboard page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="position:relative;top:-150px;">
+                <div class="dashboard-wrapper dashboard-user-profile">
+                    <div class="media">
+                        <div class="pull-left text-center" href="#!">
+                            <img class="media-object user-img" src="@Model.imageurl">
+                            <a href="/MemberArea/Profile/Update" class="btn btn-transparent mt-20">Bilgileri Güncelle</a>
+                        </div>
+                        <div class="media-body">
+                            <ul class="user-profile-list">
+                                <li><span>Ad Soyad:</span>@Model.name @Model.surname</li>
+                                <li><span>Ülke:</span>TR</li>
+                                <li><span>Email:</span>@Model.mail</li>
+                                <li><span>Telefon Numarası:</span>@Model.phonenumber</li>
+                                <li><span>Date of Birth:</span>Dec , 22 ,1991</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <br />
-    <button class="btn btn-primary">Bilgileri Güncelle</button>
-</form>
+</section>
+
 
 

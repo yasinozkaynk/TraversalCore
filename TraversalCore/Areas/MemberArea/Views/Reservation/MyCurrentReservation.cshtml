@@ -5,27 +5,46 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h1>
-    <h1>Onay Bekleyen Rezervasyonlar</h1>
 
-    <table class="table table-bordered">
-        <tr>
-            <th>#</th>
-            <th>Lokasyon</th>
-            <th>Kişi Sayısı</th>
-            <th>Rezervasyon Tarihi</th>
-            <th>Durum</th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.ReservationID</td>
-                <td>@item.Destination.City</td>
-                <td>@item.PersonCount</td>
-                <td>@item.ReservastionDate</td>
-                <td>@item.Status</td>
-            </tr>
-        }
-    </table>
-</h1>
-
+<section class="user-dashboard page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="position:relative;top:-150px;">
+                <div class="dashboard-wrapper user-dashboard">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Lokasyon</th>
+                                    <th>Kişi Sayısı</th>
+                                    <th>Rezervasyon Tarihi</th>
+                                    <th class="col-md-2 col-sm-3">Durumu</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ReservationID</td>
+                                        <td>@item.Destination.City</td>
+                                        <td>@item.PersonCount</td>
+                                        <td>@item.ReservastionDate</td>
+                                        <td>@item.Status</td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-default"><i class="tf-pencil2" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
