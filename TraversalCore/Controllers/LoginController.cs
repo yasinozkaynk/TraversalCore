@@ -20,7 +20,7 @@ namespace TraversalCore.UI.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
+     
 
         public IActionResult Index()
         {

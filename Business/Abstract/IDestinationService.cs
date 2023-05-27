@@ -16,6 +16,7 @@ namespace Business.Abstract
         IResult Update(Destination destination);
         IResult Delete(Destination destination);
         Destination GetById(int id);
+        List<Destination> GetAllById(int id);
 
 
 

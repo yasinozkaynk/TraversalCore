@@ -44,6 +44,15 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<ContactUsManager>().As<IContactUsService>().SingleInstance();
             builder.RegisterType<EfContactUsDal>().As<IContactUsDal>().SingleInstance();
+
+            builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
+            builder.RegisterType<EFCategoryDal>().As<ICategoryDal>().SingleInstance();
+
+            builder.RegisterType<SubheadingManager>().As<ISubhadingService>().SingleInstance();
+            builder.RegisterType<EfSubheadingDal>().As<ISubheadingDal>().SingleInstance();
+
+            builder.RegisterType<SubcategoryManager>().As<ISubcategoryService>().SingleInstance();
+            builder.RegisterType<EfSubcategoryDal>().As<ISubcategoryDal>().SingleInstance();
         }
     }
 }

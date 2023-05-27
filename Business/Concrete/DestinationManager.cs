@@ -34,6 +34,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Destination>>(_destinationDal.GetAll());
         }
 
+        public List<Destination> GetAllById(int id)
+        {
+            return _destinationDal.GetAll(x=>x.CategoryId==id);
+        }
+
         public Destination GetById(int id)
         {
             return _destinationDal.Get(x=>x.DestinationID==id);

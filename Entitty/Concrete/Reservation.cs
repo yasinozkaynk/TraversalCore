@@ -17,6 +17,7 @@ namespace Entity.Concrete
         public DateTime ReservastionDate { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
+
         public int DestinationID { get; set; }
         public Destination Destination { get; set; }
     }

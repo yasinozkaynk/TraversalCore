@@ -10,6 +10,7 @@ namespace Entity.Concrete
     public class Destination : IEntity
     {
         public int DestinationID { get; set; }
+        public int CategoryId { get; set; }
         public int Capacity { get; set; }
         public string City { get; set; }
         public string DayNight { get; set; }

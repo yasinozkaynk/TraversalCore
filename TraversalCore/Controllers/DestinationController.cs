@@ -19,9 +19,9 @@ namespace TraversalCore.UI.Controllers
             _destinationService = destinationService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            var result = _destinationService.GetList();
+            var result = _destinationService.GetAllById(id);
             return View(result);
         }
         [HttpGet]
