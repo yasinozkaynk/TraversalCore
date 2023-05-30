@@ -4,77 +4,60 @@
 <section class="products section bg-gray">
     <div class="container">
         <div class="row">
-            <div class="title text-center">
-                <h2>Trend Yerler</h2>
+            <div class="title text">
+                <h1 style="color: #004AAD;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Öne Çıkan Oteller</h1>
             </div>
+            <a class="text-left link link-danger" style="color: #004AAD;font-family:'Franklin Gothic Medium'" href="/AAAA">
+                Tüm Otelleri Gör <i class="tf-ion-arrow-right-a"></i>
+            </a>
         </div>
+        <br />
         <div class="row">
             @foreach (var item in Model)
-            {
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <span class="bage">Sale</span>
-                            <img class="img-responsive" src="@item.FirstImage" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <a href="/Destination/DestinationDetail/@item.DestinationID">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </a>
-                                    </li>s
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">@item.City</a></h4>
-                            <p class="price">@item.DayNight </p>
-                            <p>@item.Price $</p>
-                        </div>
-                    </div>
-                </div>
-            }
-
-            @*@foreach (var item in Model)
-            {
-                <div class="modal product-modal fade" id="product-modal">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i class="tf-ion-close"></i>
-                    </button>
-                    <div class="modal-dialog " role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-8 col-sm-6 col-xs-12">
-                                        <div class="modal-image">
-                                            <img class="@item.FirstImage" src=""  />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <div class="product-short-details">
-                                            <h2 class="product-title">GM Pendant, Basalt Grey</h2>
-                                            <p class="product-price">$200</p>
-                                            <p class="product-short-description">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iusto nihil cum. Illo laborum numquam rem aut officia dicta cumque.
-                                            </p>
-                                            <a href="cart.html" class="btn btn-main">Add To Cart</a>
-                                            <a href="product-single.html" class="btn btn-transparent">View Product Details</a>
-                                        </div>
-                                    </div>
+            {@if (item.Status == true)
+                {
+                    <div class="col-md-4">
+                        <div class="product-item">
+                            <div class="product-thumb">
+                                <span class="bage">Sale</span>
+                                <img class="img-responsive" src="@item.FirstImage" alt="product-img" />
+                                <div class="preview-meta">
+                                    <ul>
+                                        <li>
+                                            <a href="/Destination/DestinationDetail/@item.DestinationID">
+                                                <i class="tf-ion-ios-search-strong"></i>
+                                            </a>
+                                        </li>s
+                                        <li>
+                                            <a href="#!"><i class="tf-ion-ios-heart"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
+                            <div class="product-content">
+                                <h4><a href="product-single.html">@item.City</a></h4>
+                                <p class="price">@item.DayNight </p>
+                                <p>@item.Price $</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }*@
-            <!-- /.modal -->
+                }
 
+        }
         </div>
     </div>
 </section>
+
+@*<div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a href="/Ofer/Index">
+                    <img src="~/Bir başlık ekleyin.png" />
+                </a>
+            </div>
+        </div>
+
+    </div>*@

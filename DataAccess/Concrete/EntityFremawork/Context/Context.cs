@@ -31,6 +31,7 @@ namespace DataAccess.Concrete.EntityFremawork.Context
         public DbSet<Category> Categories  { get; set; }
         public DbSet<Subcategory> SubCategories  { get; set; }
         public DbSet<Subheading> Subheadings  { get; set; }
+        public DbSet<Ofer> Ofers  { get; set; }
 
     }
 }

@@ -1,0 +1,75 @@
+﻿@using Entity.Concrete
+@model List<Destination>
+
+<head>
+    <style>
+
+        .Kutu-description {
+            position: absolute;
+            bottom: 10px;
+            left: 40px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: white;
+        }
+
+            .Kutu-description h2 {
+                font-size: 25px;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+
+            .Kutu-description p {
+                font-size: 20px;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                color: white;
+            }
+    </style>
+</head>
+
+<section class="products related-products section" style="position:relative;top:-340px;">
+    <div class="container">
+        <div class="row">
+            <div class="title text">
+                <h1 style="color: #004AAD;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Öne Çıkan Batum Turları</h1>
+                <a>En keyifli tatil önerilerini sizin için hazırladık. Hemen inceleyebilir ve tatilinizi planlayabilirsiniz.</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a>
+                                <img src="https://cdn2.setur.com.tr/image/tour/large/budva_333409.jpg" style="width:350px;height:500px;" class="card-img-top" alt="...">
+                            </a>
+                            <div class="Kutu-description">
+                                <h2>6 Ülke Balkan Rotası</h2>
+                                <p>5000 ₺'den başlayan fiyatlarla</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @foreach (var item in Model.Where(x=>x.CategoryId==16))
+                        {
+                            <div class="col-md-6" style="margin-top:10px;">
+                                <div class="card">
+                                    <a href="/Destination/DestinationDetail/@item.DestinationID">
+                                        <img src="@item.Image" style="width:700px;height:230px;" class="card-img-top" alt="...">
+                                    </a>
+                                    <div class="Kutu-description">
+                                        <h2>@item.City</h2>
+                                        <p>
+                                            @item.DayNight && @item.Price ₺'den başlayan fiyatlarla
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

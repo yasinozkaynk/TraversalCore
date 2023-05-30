@@ -1,0 +1,60 @@
+﻿@using Entity.Concrete
+@model List<Ofer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="title text-center">
+        <h1 style="color: #004AAD;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Tüm Kampanyalar</h1>
+    </div>
+</div>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <div class="post">
+                        <div class="post-thumb">
+                            <a href="blog-single.html">
+                                <img style="width:500px; height:350px;" class="img-responsive" src="@item.FirstImage" alt="">
+                            </a>
+                        </div>
+                        <h2 class="post-title"><a href="blog-single.html">@item.Title</a></h2>
+                        <div class="post-content">
+                            <a href="/Ofer/OferDetail/@item.Id" style="color: #004AAD" class="btn btn">Detayı Görüntüle</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="text-center">
+            <ul class="pagination post-pagination">
+                <li>
+                    <a href="blog-left-sidebar.html">Prev</a>
+                </li>
+                <li class="active">
+                    <a href="blog-left-sidebar.html">1</a>
+                </li>
+                <li>
+                    <a href="blog-left-sidebar.html">2</a>
+                </li>
+                <li>
+                    <a href="blog-left-sidebar.html">3</a>
+                </li>
+                <li>
+                    <a href="blog-left-sidebar.html">4</a>
+                </li>
+                <li>
+                    <a href="blog-left-sidebar.html">5</a>
+                </li>
+                <li>
+                    <a href="blog-left-sidebar.html">Next</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

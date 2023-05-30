@@ -1,0 +1,35 @@
+﻿@using Entity.Concrete
+@model List<Ofer>
+
+
+<section class="products related-products section">
+    <div class="container">
+        <div class="row">
+            <div class="title text">
+                <h1 style="color: #004AAD;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Özel Kampanyalar</h1>
+            </div>
+            <a class="text-left link link-danger" style="color: #004AAD;font-family:'Franklin Gothic Medium'" href="/Ofer/Index">
+                Tüm Kampanyaları Gör <i class="tf-ion-arrow-right-a"></i>
+            </a>
+        </div>
+        <br />
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                @if (item.Status == true)
+                {
+                    <div class="col-md-4 ">
+                        <div class="product-item">
+                            <div class="product-thumb">
+                                <a href="/Destination/Index">
+                                    <img class="img-responsive" src="@item.FirstImage" alt="product-img" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>

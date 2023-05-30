@@ -1,0 +1,61 @@
+﻿
+@using Entity.Concrete
+@model List<Subcategory>
+
+<section class="products related-products section" style="position:relative;top:-230px;">
+    <div class="container">
+        <div class="row">
+            <div class="title text">
+                <h1 style="color: #004AAD;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Öne Çıkan Gemi Kategorileri</h1>
+            </div>
+            <a class="text-left link link-danger" style="color: #004AAD;font-family:'Franklin Gothic Medium'" href="/Ofer/Index">
+                Tüm Turları Gör <i class="tf-ion-arrow-right-a"></i>
+            </a>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class=" col-md-4">
+                        <div class="card border-3 border-primary">
+                            <a>
+                                <img src="https://seturcdn-res.cloudinary.com/image/upload/q_auto/f_auto/v1675754890/Ana%20Sayfa/Kategoriler/%C3%96ne%20%C3%87%C4%B1kan%20Gemi%20Kategorileri/2023/%C5%9Eubat%202023/Nehir_Turlar%C4%B1_wfkdl6.jpg" style="width:350px;height:507px;" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card">
+                                <h4 class="card-title"><a style="font-family: 'Franklin Gothic Medium'"> Nehir Turları</a></h4>
+                                <h3 style="border-left: 5px solid #004AAD; border-radius: 5px; padding-left: 6px;" class="card-text">
+                                    <a style="font-family: 'Franklin Gothic Medium'">
+                                        23.154,58 ₺
+                                        'den itibaren.
+                                    </a>
+                                    <i style="padding-left:20px;" class="tf-ion-arrow-right-b"></i>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    @foreach (var item in Model.Where(x => x.SubheadingId == 6))
+                    {
+                        @if (item.Status == true)
+                        {
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <a href="/Destination/Index/@item.Id">
+                                        <img src="@item.Image" style="width:350px;height:200px;" class="card-img-top" alt="...">
+                                    </a>
+                                    <div class="card">
+                                        <h4 class="card-title"><a style="font-family: 'Franklin Gothic Medium'" href="/Destination/Index/@item.Id">@item.CategoryName</a></h4>
+                                        <h3 style="border-left: 5px solid #004AAD; border-radius: 5px; padding-left: 6px;" class="card-text">
+                                            <a style="font-family: 'Franklin Gothic Medium'"> @item.Explanation</a> <i style="padding-left:20px;" class="tf-ion-arrow-right-b"></i>
+                                        </h3>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

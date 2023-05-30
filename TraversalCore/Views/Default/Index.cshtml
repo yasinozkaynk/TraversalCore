@@ -6,11 +6,15 @@
 
 
 @await Component.InvokeAsync("_SliderPartial")
-@await Component.InvokeAsync("_Feature")
+@await Component.InvokeAsync("_OferList")
 @await Component.InvokeAsync("_Statistics")
+<br />
+<br />
+<br />
+@await Component.InvokeAsync("_TrendCategoryList")
 @await Component.InvokeAsync("_PopularDestinations")
+@await Component.InvokeAsync("_TrendTourList")
+@await Component.InvokeAsync("_TrendShipTourList")
 
-
-@*@await Component.InvokeAsync("_SubAbout")
-
- @await Component.InvokeAsync("_Testimonial")*@
+@await Component.InvokeAsync("_SubAbout")
+@await Component.InvokeAsync("_TrendCultureTourList")

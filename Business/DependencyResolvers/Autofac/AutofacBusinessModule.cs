@@ -53,6 +53,9 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<SubcategoryManager>().As<ISubcategoryService>().SingleInstance();
             builder.RegisterType<EfSubcategoryDal>().As<ISubcategoryDal>().SingleInstance();
+
+            builder.RegisterType<OferManager>().As<IOferService>().SingleInstance();
+            builder.RegisterType<EfOferDal>().As<IOferDal>().SingleInstance();
         }
     }
 }
