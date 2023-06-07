@@ -1,4 +1,6 @@
-﻿@model List<Destination>
+﻿@using Entity.Concrete
+@model List<Destination>
+
 
 @{
     ViewData["Title"] = "Index";
@@ -36,80 +38,7 @@
     <section class="products section">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="widget">
-                        <h4 class="widget-title">Short By</h4>
-                        <form method="post" action="#">
-                            <select class="form-control">
-                                <option>Man</option>
-                                <option>Women</option>
-                                <option>Accessories</option>
-                                <option>Shoes</option>
-                            </select>
-                        </form>
-                    </div>
-                    <div class="widget product-category">
-                        <h4 class="widget-title">Categories</h4>
-                        <div class="panel-group commonAccordion" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Shoes
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                        <ul>
-                                            <li><a href="#!">Brand & Twist</a></li>
-                                            <li><a href="#!">Shoe Color</a></li>
-                                            <li><a href="#!">Shoe Color</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Duty Wear
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        <ul>
-                                            <li><a href="#!">Brand & Twist</a></li>
-                                            <li><a href="#!">Shoe Color</a></li>
-                                            <li><a href="#!">Shoe Color</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingThree">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            WorkOut Shoes
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                    <div class="panel-body">
-                                        <ul>
-                                            <li><a href="#!">Brand & Twist</a></li>
-                                            <li><a href="#!">Shoe Color</a></li>
-                                            <li><a href="#!">Gladian Shoes</a></li>
-                                            <li><a href="#!">Swis Shoes</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                @await Component.InvokeAsync("_SideBarCategoryList")
                 <div class="col-md-9 card-body " style="margin-bottom:20px;">
                     <div class="content bg-gray">
                         <div class="col-md-4">
@@ -143,20 +72,9 @@
                                 <div class="row" style="position:relative;top:15px;">
                                     <div class="card-body">
                                         <a style="font-family: 'Franklin Gothic Medium'">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane" viewBox="0 0 16 16">
-                                                <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z" />
-                                            </svg>THY
-                                        </a>
-                                        <a style="position: relative; left: 20px; font-family: 'Franklin Gothic Medium'">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                                             </svg>İstanbul
-                                        </a>
-                                        <a style="position: relative; left: 30px; font-family: 'Franklin Gothic Medium'">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-                                                <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
-                                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
-                                            </svg> 3gece 4 gün
                                         </a>
                                     </div>
                                 </div><br />
@@ -183,16 +101,26 @@
                                                 <a><b>World</b>'e özel 3 taksit </a>
                                             </div>
                                         </div>
-                                        <b style="font-size:20px;position:relative;left:40px;">
+                                        <div class="card">
+                                            <div class="card-body" style="position:relative;top:-75px;left:40px;background-color:greenyellow">
+                                                <a><i style="color:black" class="tf-ion-alert-circled"></i>Ücretsiz iade</a>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-body" style="border: dotted; border-block-color: lightblue;position: relative; top: -70px; left: 40px; background-color: lightblue">
+                                                <a>%10 indirim</a>
+                                            </div>
+                                        </div>
+                                        <b style="font-size:20px;position:relative;left:40px;top:-50px;">
                                             8.98,96₺ <br />
                                         </b>
-                                        <small style="position:relative;left:40px;">‘den başlayan fiyatlarla</small><br /><br />
-                                        <a href="#" class="button button1" style="left:40px;position:relative">Read More</a>
+                                        <small style="position:relative;left:40px;top:-50px;">‘den başlayan fiyatlarla</small><br /><br />
+                                        <a href="#" class="button button1" style="left:40px;position:relative;top:-50px;">Ayrıntılar</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div><br />                    
+                    </div>
                 </div>
             </div>
         </div>

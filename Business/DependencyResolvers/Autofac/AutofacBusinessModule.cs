@@ -56,6 +56,9 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<OferManager>().As<IOferService>().SingleInstance();
             builder.RegisterType<EfOferDal>().As<IOferDal>().SingleInstance();
+
+            builder.RegisterType<HoildayTourManager>().As<IHoildayTourService>().SingleInstance();
+            builder.RegisterType<EfHoildayTourDal>().As<IHoildayTourDal>().SingleInstance();
         }
     }
 }
