@@ -11,37 +11,59 @@
         .button {
             background-color: white;
             color: black;
-            border: 2px solid #004AAD;
+            border: 1px solid #ff3131;
+            padding: 8px 18px;
+        }
+
+            .button:hover {
+                background-color: #ff3131;
+                color: white;
+            }
+
+        .button2 {
+            background-color: white;
+            color: black;
             padding: 8px 18px;
             border-radius: 18px;
         }
 
-            .button:hover {
-                background-color: #004AAD;
+            .button2:hover {
+                background-color: #ff3131;
+                color: white;
+            }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            padding: 8px 18px;
+            border-radius: 60px;
+        }
+
+            .button1:hover {
+                background-color: #ff3131;
                 color: white;
             }
     </style>
 </head>
 <body id="body">
-    <section class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="content">
-                        <h4 class="page-name">Oteller-Rotalar</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="products section">
         <div class="container">
             <div class="row">
                 @await Component.InvokeAsync("_SideBarCategoryList")
+                <div style="position:relative;top:-40px;">
+                    <h4 style="font-family: 'Franklin Gothic Medium'">Antalya Otelleri Fiyatları ve Rezervasyon Fırsatları</h4>
+                    <small>
+                        Ana Sayfa > Antalya Otelleri ve En Uygun Antalya Otel Fiyatları
+                    </small><br /><br />
+                    <a href="#" class="button1"><i style="color:black" class="tf-ion-alert-circled"></i></a>
+                    <a href="#" class="button2 ">Popüler</a>
+                    <a href="#" class="button2 ">Fiyata Göre (Artan)</a>
+                    <a href="#" class="button2 ">Fiyata Göre (Azalan)</a>
+                </div>
                 <div class="col-md-9 card-body " style="margin-bottom:20px;">
                     @foreach (var item in Model)
                     {
-                        <div class="content bg-gray" style="border-radius:20px;">
+                        <div class="content" style="background-color:white;">
                             <div class="col-md-4">
                                 <div class="card-body  single-product-slider">
                                     <div id='carousel-custom' style="height:280px;width:230px;" class='carousel slide ' data-ride='carousel'>
@@ -73,17 +95,17 @@
                                     <div class="row" style="position:relative;top:15px;">
                                         <div class="card-body">
                                             <a style="font-family: 'Franklin Gothic Medium'">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane" viewBox="0 0 16 16">
+                                                <svg style="color:#ff3131" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane" viewBox="0 0 16 16">
                                                     <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z" />
                                                 </svg>THY
                                             </a>
                                             <a style="position: relative; left: 20px; font-family: 'Franklin Gothic Medium'">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                <svg style="color:#ff3131" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                                                 </svg>İstanbul
                                             </a>
                                             <a style="position: relative; left: 30px; font-family: 'Franklin Gothic Medium'">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                                                <svg style="color:#ff3131" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                                                     <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
                                                     <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
                                                 </svg> 3 gece && 4 gün
@@ -94,11 +116,11 @@
                                     <p class="card-text" style="font-family: 'Franklin Gothic Medium'">
                                         @item.Subtitle
                                     </p>
-                                    <small><i class="tf-ion-checkmark"></i>@item.Comment</small><br />
-                                    <small><i class="tf-ion-checkmark"></i>@item.SubComment</small><br />
+                                    <small><i style="color:#ff3131" class="tf-ion-checkmark"></i>@item.Comment</small><br />
+                                    <small><i style="color:#ff3131" class="tf-ion-checkmark"></i>@item.SubComment</small><br />
                                     <hr />
                                     <small>Tur Firması :</small>
-                                    <div class="card bg-white" style="border-left: 3px solid #808080;border-radius:5px;">
+                                    <div class="card bg-white" style="border-left: 3px solid #ff3131;border-radius:5px;">
                                         <div class="card-body">
                                             <img src="https://cdn2.setur.com.tr/image/promotions/credit_card.png" />
                                             <a href="aaa">@item.TourCompany</a>
@@ -117,17 +139,17 @@
                                                 @item.Price ₺ <br />
                                             </b>
                                             <small style="position:relative;left:40px;">‘den başlayan fiyatlarla</small><br /><br />
-                                            <a href="#" class="button button1" style="left:40px;position:relative">Ayrıntılar</a>
+                                            <a href="/Destination/DestinationDetail/@item.Id" class="button" style="left:40px;position:relative">Ayrıntılar</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div><br />
                     }
-
                 </div><br />
             </div>
         </div>
     </section>
 </body>
 </html>
+

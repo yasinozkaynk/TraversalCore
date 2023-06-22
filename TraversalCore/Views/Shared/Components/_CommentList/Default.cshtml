@@ -1,62 +1,69 @@
 ﻿@using Entity.Concrete
 @model List<Comment>
-
-
-@*<div class="comments mt-5">
-    @foreach (var item in Model)
-    {
-        <div class="media mt-4">
-            <div class="img-circle">
-                <img src="~/Traversal-Liberty/assets/images/c1.jpg" class="img-fluid" alt="...">
-            </div>
-            <div class="media-body">
-
-                <ul class="time-rply mb-2">
-                    <li>
-                        <a href="#URL" class="name mt-0 mb-2 d-block"></a>
-                   
-
-                    </li>
-                    <li class="reply-last">
-                        <a href="#reply" class="reply">
-                            Yanıtla
+@*<div id="reviews" class="tab-pane fade">
+        <div class="post-comments">
+            @foreach (var item in Model)
+            {
+                <ul class="media-list comments-list m-bot-50 clearlist">
+                    <li class="media">
+                        <a class="pull-left" href="#!">
+                            <img class="media-object comment-avatar" src="https://w7.pngwing.com/pngs/741/68/png-transparent-user-computer-icons-user-miscellaneous-cdr-rectangle-thumbnail.png" alt="" width="50" height="50" />
                         </a>
+                        <div class="media-body">
+                            <div class="comment-info">
+                                <h4 class="comment-author">
+                                    <a href="#!">@item.CommentUser</a>
+
+                                </h4>
+                                <time datetime="2013-04-06T13:53">@item.CommentDate</time>
+                                <a class="comment-button" href="#!"><i class="tf-ion-chatbubbles"></i>Reply</a>
+                            </div>
+
+                            <p>
+                                @item.CommentContent
+                            </p>
+                        </div>
                     </li>
                 </ul>
-                <p>
-                </p>
+            }
+        </div>
+    </div>*@
+<section class="products section ">
+    <div class="container" style="position:relative;top:-1000px;left:50px;">
+        <div class="row">
+            <div class="col-md-11 ">
+                <div class="content" id="aaa" style="background-color:white;border-radius:10px;">
+                    <a style="font-family: 'Franklin Gothic Medium';font-size:20px;left:30px;top:20px;position:relative;">Puan ve Yorumlar</a><br />
+                    <hr />
+                    <div class="row" style="position: relative;top: 50px;">
+                        <small style="font-family: 'Franklin Gothic Medium';font-size:20px;left:30px;position:relative;top:-50px;">Otel puan ve yorumları Tripadvisor’dan alınmaktadır.</small><br /><br />
+                        @foreach (var item in Model)
+                        {
+                            <div class="container">
+                                <div class="row card col-md-10" style="position: relative; top: -50px; left: 50px; height: 150px; border: 2px solid #f7f7f7 ">
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <div style="position:relative;top:10px;">
+                                                <b>@item.CommentUser</b><br />
+                                                <small>Genel Değerlendirme</small><br />
+                                                <b>@item.CommentTitle</b><br />
+                                                <small>@item.CommentContent</small>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-1">
+                                            <b>@item.CommentDate</b><br />
+                                            <b>Çift</b>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br />
+                        }
+                    </div>
+                </div><br />
             </div>
         </div>
-    }
-</div>*@
-<div id="reviews" class="tab-pane fade">
-    <div class="post-comments">
-        @foreach (var item in Model)
-        {
-            <ul class="media-list comments-list m-bot-50 clearlist">
-                <li class="media">
-
-                    <a class="pull-left" href="#!">
-                        <img class="media-object comment-avatar" src="https://w7.pngwing.com/pngs/741/68/png-transparent-user-computer-icons-user-miscellaneous-cdr-rectangle-thumbnail.png" alt="" width="50" height="50" />
-                    </a>
-
-                    <div class="media-body">
-                        <div class="comment-info">
-                            <h4 class="comment-author">
-                                <a href="#!">@item.CommentUser</a>
-
-                            </h4>
-                            <time datetime="2013-04-06T13:53">@item.CommentDate</time>
-                            <a class="comment-button" href="#!"><i class="tf-ion-chatbubbles"></i>Reply</a>
-                        </div>
-
-                        <p>
-                            @item.CommentContent
-                        </p>
-                    </div>
-
-                </li>
-            </ul>
-        }
-        </div>
-</div>
+    </div>
+</section>

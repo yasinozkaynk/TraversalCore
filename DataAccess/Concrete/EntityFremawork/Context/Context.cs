@@ -33,6 +33,8 @@ namespace DataAccess.Concrete.EntityFremawork.Context
         public DbSet<Subheading> Subheadings  { get; set; }
         public DbSet<Ofer> Ofers  { get; set; }
         public DbSet<HoildayTour> HoildayTours  { get; set; }
+        public DbSet<HotelTour> HotelTours  { get; set; }
+        public DbSet<HotelTourDetail> HotelTourDetails  { get; set; }
 
     }
 }

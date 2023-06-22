@@ -1,73 +1,43 @@
 ﻿@using TraversalCore.Models
 @model CategoryViewModel
 
-<section class="menu">
-    <nav class="navbar navigation">
-        <div class="container">
-            <div id="navbar" class="navbar-collapse collapse text-center">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown ">
-                        <a href="/Default/Index" class="texy text-black">Anasayfa</a>
-                    </li>
-                    @foreach (var item in Model.Category)
-                    {
-                        <li class="dropdown dropdown-slide">
-                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                               role="button" aria-haspopup="true" aria-expanded="false">
-                                @item.CategoryName <span class="tf-ion-ios-arrow-down"></span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="row">
-                                    @foreach (var itemm in Model.Subheading.Where(x => x.CategoryId == item.Id))
-                                    {
-                                        <div class="col-lg-6 col-md-6 mb-sm-3">
-                                            <ul>
-                                                <li class="dropdown-header" style="color:#004AAD; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 15px;">@itemm.SubheadingName</li>
-                                                <li role="separator" class="divider"></li>
-                                                @foreach (var subcategory in Model.Subcategory.Where(x => x.SubheadingId == itemm.Id))
-                                                {
-                                                    @if (item.CategoryName == "Tur")
-                                                    {
-                                                        <li><a href="/HolidayTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
 
-                                                    }
-                                                    else if (item.CategoryName == "Gemi")
-                                                    {
-                                                        <li><a href="/ShipTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
-                                                    }
-                                                    else
-                                                    {
-                                                        <li><a href="/Destination/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
-                                                    }
-                                                }
-                                            </ul>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                        </li>
-                    }
-                    <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                           role="button" aria-haspopup="true" aria-expanded="false">
-                            Hakkımızda
-                        </a>
-                    </li>
-                    <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                           role="button" aria-haspopup="true" aria-expanded="false">
-                            Kampanyalar
-                        </a>
-                    </li>
-                    <li class="dropdown dropdown-slide">
-                        <a href="/Contact/Index" data-delay="350"
-                           role="button" aria-haspopup="true" aria-expanded="false">
-                            İletişim
-                        </a>
-                    </li>
-                </ul>
+@foreach (var item in Model.Category)
+{
+    <li class="dropdown dropdown-slide">
+        <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" style="font-family:'Times New Roman', Times, serif" data-delay="350"
+           role="button" aria-haspopup="true" aria-expanded="false">
+            @item.CategoryName <span class="tf-ion-ios-arrow-down"></span>
+        </a>
+        <div class="dropdown-menu">
+            <div class="row">
+                @foreach (var itemm in Model.Subheading.Where(x => x.CategoryId == item.Id))
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <ul>
+                            <li class="dropdown-header" style="font-family: 'Times New Roman', Times, serif; color: #ff3131;font-size:15px;" >@itemm.SubheadingName</li>
+                            <li role="separator" class="divider"></li>
+                            @foreach (var subcategory in Model.Subcategory.Where(x => x.SubheadingId == itemm.Id))
+                            {
+                                @if (item.CategoryName == "Tur")
+                                {
+                                    <li><a style="font-family:'Times New Roman', Times, serif" href="/HolidayTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
 
+                                }
+                                else if (item.CategoryName == "Gemi")
+                                {
+                                    <li><a style="font-family:'Times New Roman', Times, serif" href="/ShipTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
+                                }
+                                else
+                                {
+                                    <li><a style="font-family:'Times New Roman', Times, serif" href="/HotelTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                }
             </div>
         </div>
-    </nav>
-</section>
+    </li>
+}
+

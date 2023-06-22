@@ -40,87 +40,91 @@
             <div class="row">
                 @await Component.InvokeAsync("_SideBarCategoryList")
                 <div class="col-md-9 card-body " style="margin-bottom:20px;">
-                    <div class="content bg-gray">
-                        <div class="col-md-4">
-                            <div class="card-body  single-product-slider">
-                                <div id='carousel-custom' style="height:280px;width:230px;" class='carousel slide ' data-ride='carousel'>
-                                    <div class='carousel-outer'>
-                                        <div class='carousel-inner'>
-                                            <div class='item active'>
-                                                <img src='https://www.hafsatur.com/wp-content/uploads/2019/12/batum-turu-01.jpg' style="height:280px;width:230px;" alt='' />
-                                            </div>
-                                            <div class='item'>
-                                                <img style="height:280px;width:230px;" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrUzhTB73Lnqc-S-RhBV1BV9MwlLKGs9norUNAkM9Yif1LTEq5W0k6Uk4pT7eklVmJ7rQ&usqp=CAU' />
-                                            </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="content bg-gray">
+                            <div class="col-md-4">
+                                <div class="card-body  single-product-slider">
+                                    <div id='carousel-custom' style="height:280px;width:230px;" class='carousel slide ' data-ride='carousel'>
+                                        <div class='carousel-outer'>
+                                            <div class='carousel-inner'>
+                                                <div class='item active'>
+                                                    <img src='https://www.hafsatur.com/wp-content/uploads/2019/12/batum-turu-01.jpg' style="height:280px;width:230px;" alt='' />
+                                                </div>
+                                                <div class='item'>
+                                                    <img style="height:280px;width:230px;" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrUzhTB73Lnqc-S-RhBV1BV9MwlLKGs9norUNAkM9Yif1LTEq5W0k6Uk4pT7eklVmJ7rQ&usqp=CAU' />
+                                                </div>
 
-                                            <div class='item'>
-                                                <img style="height:280px;width:230px;" src='~/Kampanya3.png' alt='' />
+                                                <div class='item'>
+                                                    <img style="height:280px;width:230px;" src='~/Kampanya3.png' alt='' />
+                                                </div>
                                             </div>
+                                            <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
+                                                <i class="tf-ion-ios-arrow-left"></i>
+                                            </a>
+                                            <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
+                                                <i class="tf-ion-ios-arrow-right"></i>
+                                            </a>
                                         </div>
-                                        <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
-                                            <i class="tf-ion-ios-arrow-left"></i>
-                                        </a>
-                                        <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
-                                            <i class="tf-ion-ios-arrow-right"></i>
-                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="row" style="position:relative;top:15px;">
+                                        <div class="card-body">
+                                            <a style="font-family: 'Franklin Gothic Medium'">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                                                </svg>İstanbul
+                                            </a>
+                                        </div>
+                                    </div><br />
+                                    <h4 class="card-title"><b style="font-family: 'Franklin Gothic Medium';font-size:25px;">Belgrad Rotası (THY ile) </b></h4>
+                                    <p class="card-text" style="font-family: 'Franklin Gothic Medium'">
+                                        01.06.2023'den itibaren
+                                    </p>
+                                    <small><i class="tf-ion-checkmark"></i>3 Gece && 4 Gün</small><br />
+                                    <small><i class="tf-ion-checkmark"></i>3 Gece && 4 Gün</small>
+                                    <hr />
+                                    <small>Tur Firması :</small>
+                                    <div class="card bg-white" style="border-left: 3px solid #808080;border-radius:5px;">
+                                        <div class="card-body">
+                                            <img src="https://cdn2.setur.com.tr/image/promotions/credit_card.png" />
+                                            <a href="aaa">KoçAilem Yurt Dışı Tur (%2)</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="card" style="border-left: 1px solid #808080; height: 280px">
+                                        <div class="text-center" style="position:relative;top:100px;">
+                                            <div class="card">
+                                                <div class="card-body" style="border:dotted;position:relative;top:-80px;left:40px;">
+                                                    <a><b>World</b>'e özel 3 taksit </a>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-body" style="position:relative;top:-75px;left:40px;background-color:greenyellow">
+                                                    <a><i style="color:black" class="tf-ion-alert-circled"></i>Ücretsiz iade</a>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-body" style="border: dotted; border-block-color: lightblue;position: relative; top: -70px; left: 40px; background-color: lightblue">
+                                                    <a>%10 indirim</a>
+                                                </div>
+                                            </div>
+                                            <b style="font-size:20px;position:relative;left:40px;top:-50px;">
+                                                8.98,96₺ <br />
+                                            </b>
+                                            <small style="position:relative;left:40px;top:-50px;">‘den başlayan fiyatlarla</small><br /><br />
+                                            <a href="#" class="button button1" style="left:40px;position:relative;top:-50px;">Ayrıntılar</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="row" style="position:relative;top:15px;">
-                                    <div class="card-body">
-                                        <a style="font-family: 'Franklin Gothic Medium'">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                                            </svg>İstanbul
-                                        </a>
-                                    </div>
-                                </div><br />
-                                <h4 class="card-title"><b style="font-family: 'Franklin Gothic Medium';font-size:25px;">Belgrad Rotası (THY ile) </b></h4>
-                                <p class="card-text" style="font-family: 'Franklin Gothic Medium'">
-                                    01.06.2023'den itibaren
-                                </p>
-                                <small><i class="tf-ion-checkmark"></i>3 Gece && 4 Gün</small><br />
-                                <small><i class="tf-ion-checkmark"></i>3 Gece && 4 Gün</small>
-                                <hr />
-                                <small>Tur Firması :</small>
-                                <div class="card bg-white" style="border-left: 3px solid #808080;border-radius:5px;">
-                                    <div class="card-body">
-                                        <img src="https://cdn2.setur.com.tr/image/promotions/credit_card.png" />
-                                        <a href="aaa">KoçAilem Yurt Dışı Tur (%2)</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card" style="border-left: 1px solid #808080; height: 280px">
-                                    <div class="text-center" style="position:relative;top:100px;">
-                                        <div class="card">
-                                            <div class="card-body" style="border:dotted;position:relative;top:-80px;left:40px;">
-                                                <a><b>World</b>'e özel 3 taksit </a>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-body" style="position:relative;top:-75px;left:40px;background-color:greenyellow">
-                                                <a><i style="color:black" class="tf-ion-alert-circled"></i>Ücretsiz iade</a>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-body" style="border: dotted; border-block-color: lightblue;position: relative; top: -70px; left: 40px; background-color: lightblue">
-                                                <a>%10 indirim</a>
-                                            </div>
-                                        </div>
-                                        <b style="font-size:20px;position:relative;left:40px;top:-50px;">
-                                            8.98,96₺ <br />
-                                        </b>
-                                        <small style="position:relative;left:40px;top:-50px;">‘den başlayan fiyatlarla</small><br /><br />
-                                        <a href="#" class="button button1" style="left:40px;position:relative;top:-50px;">Ayrıntılar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
+
                 </div>
             </div>
         </div>

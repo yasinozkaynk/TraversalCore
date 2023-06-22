@@ -4,14 +4,16 @@ using DataAccess.Concrete.EntityFremawork.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230618210214_mig1213")]
+    partial class mig1213
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -214,9 +216,6 @@ namespace DataAccess.Migrations
 
                     b.Property<bool>("CommentState")
                         .HasColumnType("bit");
-
-                    b.Property<string>("CommentTitle")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CommentUser")
                         .HasColumnType("nvarchar(max)");
@@ -462,9 +461,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
@@ -474,9 +470,6 @@ namespace DataAccess.Migrations
                     b.Property<string>("Explanation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Explanation2")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("HotelFeatures1")
                         .HasColumnType("nvarchar(max)");
 
@@ -484,9 +477,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HotelFeatures3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HotelName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image1")
@@ -510,63 +500,9 @@ namespace DataAccess.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
                     b.HasKey("Id");
 
                     b.ToTable("HotelTours");
-                });
-
-            modelBuilder.Entity("Entity.Concrete.HotelTourDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("HotelFeatures1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HotelFeatures2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HotelFeatures3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HotelFeatures4")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HotelFeatures5")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HotelFeatures6")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("HotelId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("HotelInformation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HotelRom1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HotelRom2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HotelTourDetails");
                 });
 
             modelBuilder.Entity("Entity.Concrete.Newslatter", b =>
