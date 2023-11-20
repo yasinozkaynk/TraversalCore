@@ -1,0 +1,57 @@
+﻿@model TraversalCore.Models.UserDetailsViewModel
+
+
+@{
+    Layout = null;
+}
+
+@if (!String.IsNullOrWhiteSpace(Model.UserName))
+{
+    <li class="dropdown dropdown-slide">
+        <a class="dropdown-toggle text-uppercase" data-toggle="dropdown" data-hover="dropdown" style="font-family:'Times New Roman', Times, serif;" data-delay="350"
+           role="button" aria-haspopup="true" aria-expanded="false">
+            @Model.UserName
+            <span class="tf-ion-ios-arrow-down"></span>
+        </a>
+        <div class="dropdown-menu">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <ul>
+
+                        @*<li class="dropdown-header" style="font-family: 'Times New Roman', Times, serif;font-size:18px;">
+                                <img style="height:50px;width:50px;border-radius:50px;position:relative;left:-10px;" src="@Model.ImageUrl" />
+
+                            </li>*@
+
+                        <li role="separator" class="divider"></li>
+
+                        <li><a href="/MemberArea/Profile/Index" style="font-family:'Times New Roman', Times, serif">Sepetim</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/MemberArea/Profile/Index" style="font-family:'Times New Roman', Times, serif">Profilim</a></li>
+                        <li><a href="/MemberArea/Profile/Index" style="font-family:'Times New Roman', Times, serif">Hesap Ayarları</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a asp-controller="Login" asp-action="Logoff" style="font-family:'Times New Roman', Times, serif">
+                                Oturumu Kapat >
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </li>
+}
+else
+{
+    <a href="/Login/SingIn" class="text-uppercase" style="font-family:'Times New Roman', Times, serif"
+       role="button" aria-haspopup="true" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+        </svg>  Giriş Yap
+    </a>
+}
+
+
+
+

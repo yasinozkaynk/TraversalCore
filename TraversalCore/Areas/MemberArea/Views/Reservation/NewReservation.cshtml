@@ -1,9 +1,9 @@
 ﻿@model Entity.Concrete.Reservation
 @{
     ViewData["Title"] = "NewReservation";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
 }
-
+@await Html.PartialAsync("/Views/MemberLayoutPartial/_NavbarPartial.cshtml")
 <h1>Yeni Rezervasyon Sayfası</h1>
 <form method="post">
     @*<div class="form-group">

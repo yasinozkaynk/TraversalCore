@@ -32,5 +32,7 @@ namespace TraversalCoreProje
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+
     }
 }

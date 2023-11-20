@@ -1,10 +1,11 @@
-﻿@model TraversalCore.Areas.MemberArea.Models.UserEditViewModel
+﻿@model TraversalCore.Models.UserDetailsViewModel
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
+@await Html.PartialAsync("/Views/MemberLayoutPartial/_NavbarPartial.cshtml")
 <section class="user-dashboard page-wrapper">
     <div class="container">
         <div class="row">
@@ -12,16 +13,17 @@
                 <div class="dashboard-wrapper dashboard-user-profile">
                     <div class="media">
                         <div class="pull-left text-center" href="#!">
-                            <img class="media-object user-img" src="@Model.imageurl">
+                            <img class="media-object user-img" src="@Model.ImageUrl">
                             <a href="/MemberArea/Profile/Update" class="btn btn-transparent mt-20">Bilgileri Güncelle</a>
                         </div>
                         <div class="media-body">
                             <ul class="user-profile-list">
-                                <li><span>Ad Soyad:</span>@Model.name @Model.surname</li>
-                                <li><span>Ülke:</span>TR</li>
-                                <li><span>Email:</span>@Model.mail</li>
-                                <li><span>Telefon Numarası:</span>@Model.phonenumber</li>
-                                <li><span>Date of Birth:</span>Dec , 22 ,1991</li>
+                                <li><span>Ad Soyad :</span>@Model.Name @Model.Surname </li>
+                                <li><span>Kullanıcı Adı :</span>@Model.UserName </li>
+                                <li><span>Ülke :</span>TR</li>
+                                <li><span>Email :</span>@Model.Mail</li>
+                                <li><span>Telefon N. :</span>@Model.Phonenumber</li>
+                                <li><span>Doğum T. :</span>Dec ,22,1991</li>
                             </ul>
                         </div>
                     </div>

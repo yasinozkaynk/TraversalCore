@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TraversalCore.Areas.MemberArea.Models;
+using TraversalCore.Models;
 
 namespace TraversalCore.Areas.MemberArea.Controllers
 {
@@ -23,30 +24,36 @@ namespace TraversalCore.Areas.MemberArea.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            UserEditViewModel userEditViewModel = new UserEditViewModel();
-            userEditViewModel.name = values.Name;
-            userEditViewModel.Id = values.Id;
-            userEditViewModel.surname = values.SurName;
-            userEditViewModel.phonenumber = values.PhoneNumber;
-            userEditViewModel.mail = values.Email;
-            userEditViewModel.imageurl = values.ImageUrl;
-            return View(userEditViewModel);
+            var values = _userManager.GetUserAsync(HttpContext.User).Result;
+
+            UserDetailsViewModel model = new UserDetailsViewModel()
+            {
+                UserName = HttpContext.User.Identity.Name,
+                Phonenumber=values.PhoneNumber,
+                Name=values.Name,
+                Surname=values.SurName,
+                ImageUrl=values.ImageUrl,
+                Id=values.Id,
+                Mail=values.Email
+            };
+            return View(model);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Update()
+        public IActionResult Update()
         {
-            var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            UserEditViewModel userEditViewModel = new UserEditViewModel();
-            userEditViewModel.name = values.Name;
-            userEditViewModel.surname = values.SurName;
-            userEditViewModel.phonenumber = values.PhoneNumber;
-            userEditViewModel.mail = values.Email;
-            userEditViewModel.imageurl = values.ImageUrl;
-            return View(userEditViewModel);
+            var values = _userManager.GetUserAsync(HttpContext.User).Result;
+            UserDetailsViewModel model = new UserDetailsViewModel()
+            {
+                UserName = HttpContext.User.Identity.Name,
+                Phonenumber = values.PhoneNumber,
+                ImageUrl = values.ImageUrl,
+                Id = values.Id,
+                Mail = values.Email
+            };
+            return View(model);
         }
 
         [HttpPost]

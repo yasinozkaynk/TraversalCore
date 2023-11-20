@@ -4,7 +4,7 @@
 }
 
 <section class="top-header">
-    <div class="container">
+    <div class="container navbar navigation" >
         <div class="row">
             <div class="col-md-4 col-xs-12 col-sm-4">
                 <div class="contact-number">
@@ -19,16 +19,14 @@
             </div>
             <div class="col-md-4 col-xs-12 col-sm-4">
                 <ul class="top-menu text-right list-inline">
-                    <li class="dropdown cart-nav">
-                        <a href="/Login/SingIn" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 17px;">
-                            <i class="tf-ion-ios-person-outline" style="font-size:35px;color:black"></i> Giriş Yap/Üye Ol
-                        </a>
-                    </li>
                     <li class="dropdown cart-nav ">
-                        <a href="/Login/SingIn" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:17px;">
-                            <i class="tf-ion-ios-cart" style="font-size:30px;" ></i> Sepetim
+                        <a href="" class="text-uppercase" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
+                            <i class="tf-ion-ios-cart" style="font-size:30px;"></i> Sepetim
                         </a>
                     </li>
+                    <li class="dropdown dropdown-slide" style="font-family:'Times New Roman', Times, serif" data-delay="350">
+                        @await Component.InvokeAsync("_UserNavigation")
+                    <li />
                 </ul>
             </div>
         </div>
@@ -50,7 +48,7 @@
                         </a>
                     </li>
                     <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" style="font-family:'Times New Roman', Times, serif" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
+                        <a href="/Ofer/Index" style="font-family:'Times New Roman', Times, serif" data-delay="350"
                            role="button" aria-haspopup="true" aria-expanded="false">
                             Kampanyalar
                         </a>

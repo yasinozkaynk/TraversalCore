@@ -65,6 +65,7 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<HotelTourDetailManager>().As<IHotelTourDetailService>().SingleInstance();
             builder.RegisterType<EfHotelTourDetailDal>().As<IHotelTourDetailDal>().SingleInstance();
+
         }
     }
 }

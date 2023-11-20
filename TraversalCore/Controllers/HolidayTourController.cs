@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -22,5 +23,6 @@ namespace TraversalCore.Controllers
             var result = _hoildayTourService.GetAllById(id);
             return View(result);
         }
+       
     }
 }

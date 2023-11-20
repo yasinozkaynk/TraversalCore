@@ -42,5 +42,6 @@ namespace Business.Concrete
         {
             _appUserDal.Update(appUser);
         }
+
     }
 }

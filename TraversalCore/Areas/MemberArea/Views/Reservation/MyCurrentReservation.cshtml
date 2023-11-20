@@ -2,10 +2,10 @@
 @model List<Reservation>
 @{
     ViewData["Title"] = "MyCurrentReservation";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-
+@await Html.PartialAsync("/Views/MemberLayoutPartial/_NavbarPartial.cshtml")
 <section class="user-dashboard page-wrapper">
     <div class="container">
         <div class="row">
@@ -40,7 +40,7 @@
                                         </td>
                                     </tr>
                                 }
-                                </tbody>
+                            </tbody>
                         </table>
                     </div>
                 </div>

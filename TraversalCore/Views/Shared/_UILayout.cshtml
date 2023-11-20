@@ -7,8 +7,9 @@
 
 @await Html.PartialAsync("/Views/LayoutPartial/_HeaderPartial.cshtml")
 <body class="bg-gray">
-    @await Html.PartialAsync("/Views/LayoutPartial/_Navbar2Partial.cshtml")
 
+
+    @await Html.PartialAsync("/Views/LayoutPartial/_Navbar2Partial.cshtml")
     @RenderBody()
 
     @await Html.PartialAsync("/Views/LayoutPartial/_FooterPartial.cshtml")

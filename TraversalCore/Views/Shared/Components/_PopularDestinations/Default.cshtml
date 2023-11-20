@@ -1,63 +1,112 @@
 ﻿@using Entity.Concrete
 @model List<Destination>
+<style>
+    .button {
+        background-color: white;
+        color: black;
+        border: 1px solid #ff3131;
+        padding: 8px 18px;
+    }
 
-<section class="products section bg-gray">
+        .button:hover {
+            background-color: #ff3131;
+            color: white;
+        }
+</style>
+@*<section class="products section bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="title text">
+                    <h1 style="color: #ff3131; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Öne Çıkan Oteller</h1>
+                </div>
+                <a class="text-left link link-danger" style="color: #ff3131; font-family: 'Franklin Gothic Medium'" href="/AAAA">
+                    Tüm Otelleri Gör <i class="tf-ion-arrow-right-a"></i>
+                </a>
+            </div>
+            <br />
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    @if (item.Status == true)
+                    {
+                        <div class="col-md-4">
+                            <div class="product-item">
+                                <div class="product-thumb">
+                                    <span class="bage">Sale</span>
+                                    <img class="img-responsive" src="@item.FirstImage" alt="product-img" />
+                                    <div class="preview-meta">
+                                        <ul>
+                                            <li>
+                                                <a href="/Destination/DestinationDetail/@item.DestinationID">
+                                                    <i class="tf-ion-ios-search-strong"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#!"><i class="tf-ion-ios-heart"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h4><a href="product-single.html">@item.City</a></h4>
+                                    <p class="price">@item.DayNight </p>
+                                    <p>@item.Price $</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+            }
+            </div>
+        </div>
+    </section>*@
+
+<section class="products related-products section" style="position:relative;">
     <div class="container">
         <div class="row">
             <div class="title text">
-                <h1 style="color: #ff3131; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Öne Çıkan Oteller</h1>
+                <h1 style="color: #ff3131; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Öne Çıkan Otelleri</h1>
             </div>
-            <a class="text-left link link-danger" style="color: #ff3131; font-family: 'Franklin Gothic Medium'" href="/AAAA">
+            <a class="text-left link link-danger" style="color: #ff3131; font-family: 'Franklin Gothic Medium'" href="/Ofer/Index">
                 Tüm Otelleri Gör <i class="tf-ion-arrow-right-a"></i>
             </a>
         </div>
-        <br />
+
+        <div>
+            <br />
+            <a href="" class="button " style="position:relative">Ayrıntılar</a>
+            <br />
+        </div>
+     
         <div class="row">
-            @foreach (var item in Model)
-            {@if (item.Status == true)
-                {
-                    <div class="col-md-4">
-                        <div class="product-item">
-                            <div class="product-thumb">
-                                <span class="bage">Sale</span>
-                                <img class="img-responsive" src="@item.FirstImage" alt="product-img" />
-                                <div class="preview-meta">
-                                    <ul>
-                                        <li>
-                                            <a href="/Destination/DestinationDetail/@item.DestinationID">
-                                                <i class="tf-ion-ios-search-strong"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#!"><i class="tf-ion-ios-heart"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                        </li>
-                                    </ul>
+            <div class="col-md-12">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    @foreach (var item in Model)
+                    {
+                        @if (item.Status == true)
+                        {
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <a href="/Destination/Index/@item.DestinationID">
+                                        <img src="@item.FirstImage" style="width:350px;height:200px;" class="card-img-top" alt="...">
+                                    </a>
+                                    <div class="card">
+                                        <h4 class="card-title"><a style="font-family: 'Franklin Gothic Medium'" href="/Destination/Index/@item.DestinationID">@item.DayNight</a></h4>
+                                        <h3 style="border-left: 5px solid #ff3131; border-radius: 5px; padding-left: 6px;" class="card-text">
+                                            <a style="font-family: 'Franklin Gothic Medium'"> @item.City</a> <br />
+                                            <a style="font-family: 'Franklin Gothic Medium'"> @item.Price $</a>
+                                        </h3>
+                                        <br />
+                                    </div>
                                 </div>
                             </div>
-                            <div class="product-content">
-                                <h4><a href="product-single.html">@item.City</a></h4>
-                                <p class="price">@item.DayNight </p>
-                                <p>@item.Price $</p>
-                            </div>
-                        </div>
-                    </div>
-                }
-
-        }
+                        }
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </section>
-
-@*<div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <a href="/Ofer/Index">
-                    <img src="~/Bir başlık ekleyin.png" />
-                </a>
-            </div>
-        </div>
-
-    </div>*@

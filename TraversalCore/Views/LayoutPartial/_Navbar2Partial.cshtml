@@ -2,7 +2,6 @@
 <section class="menu bg-white" style="background-color:white">
     <nav class="navbar navigation">
         <div class="container col-md-12">
-       
             <div id="navbar" class="navbar-collapse collapse text-center">
                 <ul class="nav navbar-nav">
                     <li class="logo text-left" style="position:relative;left:-300px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
@@ -21,7 +20,7 @@
                         </a>
                     </li>
                     <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" style="font-family:'Times New Roman', Times, serif" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
+                        <a href="/Ofer/Index" style="font-family:'Times New Roman', Times, serif" data-delay="350"
                            role="button" aria-haspopup="true" aria-expanded="false">
                             Kampanyalar
                         </a>
@@ -32,10 +31,8 @@
                             İletişim
                         </a>
                     </li>
-                    <li>
-                        <a href="/Login/SingIn" style="font-family: 'Times New Roman', Times, serif;">
-                            <i class="tf-ion-ios-person-outline" style="font-size:20px;color:black"></i> Giriş Yap/Üye Ol
-                        </a>
+                    <li class="dropdown dropdown-slide" style="font-family:'Times New Roman', Times, serif" data-delay="350">
+                        @await Component.InvokeAsync("_UserNavigation")
                     </li>
                 </ul>
             </div>

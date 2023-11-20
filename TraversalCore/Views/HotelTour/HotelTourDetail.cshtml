@@ -20,17 +20,6 @@
             }
     </style>
 </head>
-
-<section class="products related-products section bg-gray">
-    <div class="container bg-white">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <section class="products related-products section" style="background-color:white;">
     <div class="container bg-white">
         <div class="row">
@@ -181,7 +170,6 @@
     <div class="container" style="position:relative;top:-520px;left:-20px">
         <div class="col-md-10">
             <div class="row ">
-                <img src="https://seturcdn-res.cloudinary.com/image/upload/q_auto/f_auto/v1686742708/%C3%9Cr%C3%BCn%20Detay/Divan%20Bodrum/Divan_Emir_Ersoy_1180x300_wwfjaw.jpg" />
             </div><br />
         </div>
     </div>
@@ -189,6 +177,7 @@
 
 @await Component.InvokeAsync("_HotelTourDetail", new { id = ViewBag.i })
 @await Component.InvokeAsync("_CommentList", new { id = ViewBag.i })
+@await Component.InvokeAsync("_TrendHotels")
 
 
 
