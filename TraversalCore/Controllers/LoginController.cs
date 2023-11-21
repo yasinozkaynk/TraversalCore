@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TraversalCore.Models;
+using TraversalCore.OptionsModels;
 using TraversalCore.Services;
 
 namespace TraversalCore.UI.Controllers
@@ -78,20 +79,26 @@ namespace TraversalCore.UI.Controllers
                 var result = await _signInManager.PasswordSignInAsync(p.username, p.password, false, true);
                 if (result.Succeeded)
                 {
+                    TempData["success"] = "Giriş Başarılı";
                     return RedirectToAction("Index", "Profile", new { area = "MemberArea" });
                 }
                 else
                 {
-                    return RedirectToAction("SignIn", "Login");
+                    TempData["error"] = "Giriş Hatalı";
+                    return View();
                 }
             }
             return View();
         }
         public IActionResult LogOff()
         {
-            _signInManager.SignOutAsync().Wait();
+            if (ModelState.IsValid)
+            {
+                _signInManager.SignOutAsync().Wait();
+                TempData["success"] = "Çıkış Yapıldı";
+                return RedirectToAction("SingIn");
+            }
             return RedirectToAction("SingIn");
-          
         }
 
         [HttpGet]
@@ -106,7 +113,7 @@ namespace TraversalCore.UI.Controllers
             var hasUser = await _userManager.FindByEmailAsync(request.Email);
             if (hasUser==null)
             {
-                ModelState.AddModelError(String.Empty, "Bu email adresine sahip kullanıcı bulunamadı");
+                TempData["error"]=("Bu email adresine sahip kullanıcı bulunamadı");
                 return View();
             }
             string passwordResetToken =await _userManager.GeneratePasswordResetTokenAsync(hasUser);
@@ -114,7 +121,7 @@ namespace TraversalCore.UI.Controllers
 
             await _emailService.SendResetPasswordEmail(passwordResetLink,hasUser.Email);
 
-            ViewBag.SuccesMessage = "Şifre yenileme linki, eposta adresinize gönderilmiştir.";
+            TempData["success"] = "Şifre yenileme linki, eposta adresinize gönderilmiştir.";
             return RedirectToAction(nameof(ForgetPassword));
         }
         [HttpGet]
@@ -141,14 +148,14 @@ namespace TraversalCore.UI.Controllers
 
             if (hasUser == null)
             {
-                ViewBag.Error( "Kullanıcı Bulunamadı");
+                TempData["error"] = "Kullanıcı Bulunamadı";
                 return View();
             }
 
             IdentityResult result = await _userManager.ResetPasswordAsync(hasUser,token,request.Password);
             if (result.Succeeded)
             {
-                ViewBag.SuccesMessage = "Şifreniz başarıyla yenilendi";
+                TempData["success"] = "Şifreniz başarıyla yenilendi";
             }
             else
             {

@@ -79,7 +79,6 @@
 </style>
 
 
-
 <div class="container">
     <div class="col-md-12">
         <div class="row">
@@ -89,7 +88,7 @@
                     <form class="text-left" method="post">
                         <div class="form-group">
                             <label for="inp" class="inp">
-                                <input type="email" asp-for="username" class="form-control" id="inp" placeholder="&nbsp;">
+                                <input value="admin@admin" type="email" asp-for="username" class="form-control" id="userName" placeholder="&nbsp;">
                                 <span class="label">Kullanıcı Adı</span>
                                 <span class="focus-bg"></span>
                                 <span asp-validation-for="username"></span>
@@ -97,7 +96,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inp" class="inp">
-                                <input type="password" id="kutu" asp-for="password" class="form-control" placeholder="&nbsp;">
+                                <input value="Yasin.1" type="password" id="password" asp-for="password" class="form-control" placeholder="&nbsp;">
                                 <span class="label">Şifre</span>
                                 <span class="focus-bg"></span>
                                 <span asp-validation-for="password"></span>
@@ -107,7 +106,7 @@
                             <button type="submit" style="font-size:18px;color:white;background-color:red;width:400px;height:60px;font-family:'Times New Roman', Times, serif;position:relative; left:-60px; " class="btn btn-main text-center">Giriş Yap</button>
                         </div>
                     </form>
-                    <p style="position: relative; left: -60px; font-family: 'Times New Roman', Times, serif " class="mt-20">Bu sitede yenimisin ?<a class="btn btn-link"  href="/Login/SingUp"> Şimdi Kayıt Ol</a></p>
+                    <p style="position: relative; left: -60px; font-family: 'Times New Roman', Times, serif " class="mt-20">Bu sitede yenimisin ?<a class="btn btn-link" href="/Login/SingUp"> Şimdi Kayıt Ol</a></p>
                     <p style="position: relative;top:-15px;font-size:20px; left: -60px; font-family: 'Times New Roman', Times, serif " class="mt-20"><a class="btn btn-link" href="/Login/ForgetPassword"> Şifremi Unuttum</a></p>
                 </div>
             </div>
@@ -149,3 +148,5 @@
         </div>
     </div>
 </div>
+
+

@@ -5,6 +5,7 @@
 <body id="body">
     @await Html.PartialAsync("/Views/LayoutPartial/_NavbarPartial.cshtml")
 
+    <partial name="_NotificationAlert"/>
     @RenderBody()
 
     @await Html.PartialAsync("/Views/LayoutPartial/_FooterPartial.cshtml")

@@ -11,6 +11,7 @@
 
     @await Html.PartialAsync("/Views/LayoutPartial/_Navbar2Partial.cshtml")
     @RenderBody()
+    <partial name="_NotificationAlert" />
 
     @await Html.PartialAsync("/Views/LayoutPartial/_FooterPartial.cshtml")
 
