@@ -1,42 +1,186 @@
 ﻿@model TraversalCore.Models.UserRegisterViewModel
 @{
     ViewData["Title"] = "SingUp";
-    Layout = "~/Views/Shared/_UILayout.cshtml";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
 
 }
 
-<div class="signin-page account">
-    <div class="container" >
+<style>
+    body {
+        font-family: Roboto;
+        -webkit-font-smoothing: antialiased;
+    }
+
+
+
+    .inp {
+        position: relative;
+        margin: auto;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+        .inp .label {
+            position: absolute;
+            top: 20px;
+            left: 12px;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.5);
+            font-weight: 500;
+            transform-origin: 0 0;
+            border: 5px inherit;
+            transform: translate3d(0, 0, 0);
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+
+        .inp .focus-bg {
+            background: rgba(0, 0, 0, 0.05);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        .inp input {
+            height: 60px;
+            width: 500px;
+            border: 3px groove;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+            .inp input:not(:-moz-placeholder-shown) + .label {
+                color: rgba(0, 0, 0, 0.5);
+                transform: translate3d(0, -12px, 0) scale(0.75);
+            }
+
+            .inp input:not(:-ms-input-placeholder) + .label {
+                color: rgba(0, 0, 0, 0.5);
+                transform: translate3d(0, -12px, 0) scale(0.75);
+            }
+
+            .inp input:not(:placeholder-shown) + .label {
+                color: rgba(0, 0, 0, 0.5);
+                transform: translate3d(0, -12px, 0) scale(0.75);
+            }
+
+            .inp input:focus {
+            }
+
+                .inp input:focus + .label {
+                    color: black;
+                    transform: translate3d(0, -12px, 0) scale(0.75);
+                }
+
+                    .inp input:focus + .label + .focus-bg {
+                        transform: scaleX(1);
+                        transition: all 0.1s ease;
+                    }
+</style>
+
+
+
+<div class="container">
+    <div class="col-md-12">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-7">
                 <div class="block text-center">
-                    <h2 class="text-center">Kayıt OL</h2>
+                    <b style="position: relative; left: 50px; font-size: 40px; font-family: 'Times New Roman', Times, serif" class="text-center">Merhaba Hoş Geldiniz</b><br /><br /><br />
                     <form class="text-left" method="post">
                         <div class="form-group">
-                            <input type="text" asp-for="Name" class="form-control" required placeholder="İsim">
+                            <label for="inp" class="inp">
+                                <input type="text" asp-for="Name" class="form-control" id="inp" placeholder="&nbsp;">
+                                <span class="label">Ad</span>
+                                <span class="focus-bg"></span>
+                                <span asp-validation-for="Name"></span>
+                            </label>
                         </div>
                         <div class="form-group">
-                            <input type="text" asp-for="Surname" class="form-control" required placeholder="Soyisim">
+                            <label for="inp" class="inp">
+                                <input type="text" id="kutu" asp-for="Surname" class="form-control" placeholder="&nbsp;">
+                                <span class="label">Soyad</span>
+                                <span class="focus-bg"></span>
+                                <span asp-validation-for="Surname"></span>
+                            </label>
                         </div>
                         <div class="form-group">
-                            <input type="text" asp-for="UserName" class="form-control" required placeholder="Kullanıcı Adı">
+                            <label for="inp" class="inp">
+                                <input type="text" id="kutu" asp-for="UserName" class="form-control" placeholder="&nbsp;">
+                                <span class="label">Kullanıcı Adı</span>
+                                <span class="focus-bg"></span>
+                                <span asp-validation-for="UserName"></span>
+                            </label>
                         </div>
                         <div class="form-group">
-                            <input type="text" asp-for="Mail" class="form-control" required placeholder="Email">
+                            <label for="inp" class="inp">
+                                <input type="tel" id="kutu" asp-for="Phonenumber" class="form-control" placeholder="&nbsp;">
+                                <span class="label">Telefon Numarası</span>
+                                <span class="focus-bg"></span>
+                                <span asp-validation-for="Phonenumber"></span>
+                            </label>
                         </div>
                         <div class="form-group">
-                            <input type="password" asp-for="Password" class="form-control"required placeholder="Password">
+                            <label for="inp" class="inp">
+                                <input type="email" asp-for="Mail" class="form-control" id="inp" placeholder="&nbsp;">
+                                <span class="label">E-posta</span>
+                                <span class="focus-bg"></span>
+                                <span asp-validation-for="Mail"></span>
+                            </label>
                         </div>
                         <div class="form-group">
-                            <input type="password" asp-for="ConfirmPassword" class="form-control" required placeholder="Password">
+                            <label for="inp" class="inp">
+                                <input type="password" id="kutu" asp-for="Password" class="form-control" placeholder="&nbsp;">
+                                <span class="label">Şifre</span>
+                                <span class="focus-bg"></span>
+                                <span asp-validation-for="Password"></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="inp" class="inp">
+                                <input type="password" id="kutu" asp-for="ConfirmPassword" class="form-control" placeholder="&nbsp;">
+                                <span class="label">Şifre Tekrar</span>
+                                <span class="focus-bg"></span>
+                                <span asp-validation-for="ConfirmPassword"></span>
+                            </label>
                         </div>
                         <div class="text-center">
-                            <button  class="btn btn-main text-center">Kayıt Ol</button>
+                            <button type="submit" style="font-size:15px;color:white;background-color:red;width:400px;font-family:'Times New Roman', Times, serif;position:relative; left:-70px; " class="btn btn-main text-center">Üye Ol</button>
                         </div>
                     </form>
-                    <p class="mt-20">Zaten bir hesabım var<a href="/Login/SingIn"> Giriş Yap</a></p>
-                    <p><a href="forget-password.html"> Parolanızı mı unuttunuz</a></p>
                 </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="block text-left">
+                            <b style=" color: red; font-size: 33px; font-family: 'Times New Roman', Times, serif " class="text-left">Tatil Planım Extra fırsatlarından yararlanmak için şimdi üye ol!</b>
+                        </div>
+                        <br />
+                        <div style="position: relative;" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="color:green" width="25" height="25" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                                </svg>
+                                <a class="me-auto" style="font-size:15px;">Seyahat harcamalarından puan kazanır, kazandığın puanları dilediğince harcarsın.</a><br /><br />
+                                <svg xmlns="http://www.w3.org/2000/svg" style="color:green" width="25" height="25" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                                </svg>
+                                <a class="me-auto" style="font-size:15px;">Hoş geldin kuponu ile hemen kazanmaya başlarsın.</a><br /><br />
+                                <svg xmlns="http://www.w3.org/2000/svg" style="color:green" width="25" height="25" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                                </svg>
+                                <a class="me-auto" style="font-size:15px;">Sana özel kampanya ve fırsatlardan yararlanırsın.</a><br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img style="width:360px;height:380px;" src="~/Kampanya2.png" />
+                    </div>
+                </div>
+              
             </div>
         </div>
     </div>
