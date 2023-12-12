@@ -43,7 +43,6 @@ namespace TraversalCoreProje
             services.AddScoped<IEmailService, EmailService>();
             services.AddHttpClient();
 
-
             services.AddLogging(x =>
             {
                 x.ClearProviders();

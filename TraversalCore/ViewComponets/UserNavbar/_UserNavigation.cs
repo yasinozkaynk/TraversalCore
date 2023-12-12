@@ -22,21 +22,15 @@ namespace TraversalCore.ViewComponets.UserNavbar
         {
             _userManager = userManager;
         }
-
+        [HttpGet]
         public ViewViewComponentResult Invoke()
         {
-            var values = _userManager.GetUserAsync(HttpContext.User).Result;
-
             UserDetailsViewModel model = new UserDetailsViewModel()
             {
                 UserName = HttpContext.User.Identity.Name,
-                //Name = values.Name,
-                //Surname = values.SurName,
-                //ImageUrl = values.ImageUrl,
+           
             };
-          
             return View(model);
-
 
         }
 

@@ -57,12 +57,5 @@ namespace TraversalCore.Areas.MemberArea.Controllers
             ViewBag.v = values;
             return View();
         }
-
-        [HttpPost]
-        public IActionResult NewReservation(Reservation p)
-        {
-            _reservationService.Add(p);
-            return RedirectToAction("MyCurrentReservation");
-        }
     }
 }

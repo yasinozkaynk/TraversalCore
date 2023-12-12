@@ -4,7 +4,7 @@
 }
 
 <section class="top-header">
-    <div class="container navbar navigation" >
+    <div class="container navbar navigation">
         <div class="row">
             <div class="col-md-4 col-xs-12 col-sm-4">
                 <div class="contact-number">
@@ -19,9 +19,14 @@
             </div>
             <div class="col-md-4 col-xs-12 col-sm-4">
                 <ul class="top-menu text-right list-inline">
-                    <li class="dropdown cart-nav ">
-                        <a href="" class="text-uppercase" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
-                            <i class="tf-ion-ios-cart" style="font-size:30px;"></i> Sepetim
+                    <li style="position:relative;left:35px;">
+                        <a href="" class="text-uppercase">
+                            <i class="tf-ion-ios-cart-outline" style="font-size: 25px; font-weight: bold;"></i>
+                        </a>
+                    </li>
+                    <li style="position:relative;left:25px;"> 
+                        <a href="" class="text-uppercase" style="color: black;">
+                            <i class="tf-ion-ios-heart-outline" style="font-size: 25px; font-weight: bold"></i>
                         </a>
                     </li>
                     <li class="dropdown dropdown-slide" style="font-family:'Times New Roman', Times, serif" data-delay="350">
@@ -41,12 +46,6 @@
                         <a href="/Default/Index" style="font-family:'Times New Roman', Times, serif" class="texy text-black">Anasayfa</a>
                     </li>
                     @await Component.InvokeAsync("_CategoryList")
-                    <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" style="font-family:'Times New Roman', Times, serif" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                           role="button" aria-haspopup="true" aria-expanded="false">
-                            Hakkımızda
-                        </a>
-                    </li>
                     <li class="dropdown dropdown-slide">
                         <a href="/Ofer/Index" style="font-family:'Times New Roman', Times, serif" data-delay="350"
                            role="button" aria-haspopup="true" aria-expanded="false">

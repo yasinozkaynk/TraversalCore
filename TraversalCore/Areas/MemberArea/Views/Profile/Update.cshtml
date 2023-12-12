@@ -1,32 +1,173 @@
-﻿
+﻿@model TraversalCore.Areas.MemberArea.Models.UserEditViewModel
+
 @{
     ViewData["Title"] = "Update";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
 }
-<form method="post" enctype="multipart/form-data">
-        @Html.Label("Adınız")
-        <input type="text" asp-for="Name" class="form-control" />
-        <br />
-        @Html.Label("Soyadınız")
-        <input type="text" asp-for="Surname" class="form-control" />
-        <br />
-        @Html.Label("Mail Adresiniz")
-        <input type="text" asp-for="Mail" class="form-control" />
-        <br />
-        @Html.Label("Şifreniz")
-        <input type="text" asp-for="Password" class="form-control" />
-        <br />
-        @Html.Label("Şifre Tekrar")
-        <input type="text" asp-for="Confirmpassword" class="form-control" />
-        <br />
-        @Html.Label("Telefon Numarası")
-        <input type="text" asp-for="Phonenumber" class="form-control" />
-        <br />
-        <div class="form-group">
-            <label>Resim Seçin</label>
-            <input type="file" asp-for="Image" />
-        </div>
-        <br />
-        <button class="btn btn-primary">Bilgileri Güncelle</button>
-    </form>
 
+
+<link href="~/css/updateProfile.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="list-group" id="mydiv">
+                            <a class="dropdown-header" style="font-family: 'Times New Roman', Times, serif;font-size:18px;margin:10px">
+                                <img style="height:50px;width:50px;border-radius:50px;position:relative;left:-10px;" src="@Model.imageurl" />
+                                @Model.name @Model.surname
+                            </a>
+                            <a href="/MemberArea/Profile/Index" class="list-group-item list-group-item-action" style="font-family:'Times New Roman', Times, serif">Sepetim</a>
+                            <a href="/MemberArea/Profile/Index" class="list-group-item list-group-item-action" style="font-family:'Times New Roman', Times, serif">Profilim</a>
+                            <a href="/MemberArea/Profile/Update" class="list-group-item list-group-item-action" style="font-family:'Times New Roman', Times, serif">Hesap Ayarları</a>
+                            <a href="#myModal" class="list-group-item list-group-item-action" style="font-family:'Times New Roman', Times, serif" data-toggle="modal">Şifre Güncelle</a>
+                            <a href="#myModal3" class="list-group-item list-group-item-action" style="font-family:'Times New Roman', Times, serif" data-toggle="modal">
+                                Oturumu Kapat
+                            </a>
+                            <a href="#myModal2" class="list-group-item list-group-item-action" style="font-family: 'Times New Roman', Times, serif; color: red; background-color: #f5f5f5" data-toggle="modal">Hesabı Sil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <b style="font-size: 30px; font-family: 'Times New Roman', Times, serif" class="text-center">Hesap Ayarları</b><hr />
+                @if (TempData["success"] != null)
+                {
+                    <div class="alert alert-success">
+                        <strong>Başarılı !</strong> @TempData["success"]
+                    </div>
+                }
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-danger">
+                        <strong>Hata !</strong> @TempData["error"]
+                    </div>
+                }
+                <form novalidate class="box" name="Update" method="post">
+                    <a style="font-size: 18px; font-family: 'Times New Roman', Times, serif" class="text-center">Kişisel Bilgiler</a><br /><br />
+                    <div class="form-group">
+                        <label>Resim Seçin</label>
+                        <input type="file" asp-for="Image" />
+                    </div>
+                    <br />
+                    <div class="row form-group">
+                        <div class="col-md-6 ">
+                            @Html.Label("Adınız")
+                            <input type="text" name="name" id="input" value="@Model.name" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            @Html.Label("Soyadınız")
+                            <input type="text" name="surname" value="@Model.surname" id="input" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            @Html.Label("Kullanıcı Adı")
+                            <input type="text" name="userName" value="@Model.userName" id="input" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            @Html.Label("Mail Adresiniz")
+                            <input type="email" style="width:380px;" value="@Model.mail" name="mail" id="input" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            @Html.Label("Telefon Numarası")
+                            <input style="width:50px;" type="tel" id="input" disabled name="phonenumbber" value="+90" class="form-control" />
+                        </div>
+                        <div class="col-md-5">
+                            @Html.Label("")
+                            <input style="margin-top:25px;margin-left:-135px;" type="tel" id="input" value="@Model.phonenumber" name="phonenumber" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <button id="button" class=" btn btn-primary" type="submit">Gönder</button><br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-login modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="avatar">
+                    <img src="~/avatar.png" alt="Avatar" />
+                </div>
+                <h4 class="modal-title">Şifre Güncelle</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("UpdatePassword", "Profile", FormMethod.Post))
+                {
+
+                    <div class="form-group">
+                        <h5>Şifre</h5>
+                        @Html.TextBoxFor(x => x.updatePassword.password, new { @class = "form-control", @type = "password", @id = "input" })
+                    </div>
+                    <div class="form-group">
+                        <h5>Şifre Tekrar</h5>
+                        @Html.TextBoxFor(x => x.updatePassword.confirmpassword, new { @class = "form-control", @type = "password", @id = "input" })
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Güncelle</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal2" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="tf tf-ion-close"></i>
+                </div>
+                <h4 class="modal-title">Emin misiniz?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Bu hesabı gerçekten silmek istiyor musunuz?</p>
+                <p class="text-center"> Bu işlem geri alınamaz.</p>
+            </div>
+            <div class="modal-footer">
+                <a style="background-color: gray; color: white; border: 1px solid #d4d2d2" class="btn btn-info" data-dismiss="modal">Kapat</a>
+                <a style="background-color:red;color:white;border:1px solid #d4d2d2;"href="/Login/DeleteUser/@Model.Id" class="btn btn-danger">Sil</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal3" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="tf tf-ion-android-close"></i>
+                </div>
+                <h4 class="modal-title">Emin misiniz?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Oturum Kapatılıyor !</p>
+            </div>
+            <div class="modal-footer">
+                <a style="background-color: gray; color: white; border: 1px solid #d4d2d2" class="btn btn-info" data-dismiss="modal">Kapat</a>
+                <a style="background-color:red;color:white;border:1px solid #d4d2d2;" href="/Login/LogOff" class="btn btn-danger">Çıkış Yap</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-﻿using Core.Entities.Concrete;
+﻿using Business.Abstract;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFremawork.Context;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -20,11 +21,13 @@ namespace TraversalCore.UI.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IEmailService _emailService;
-        public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailService emailService)
+        private readonly IAppUserService _appUserService;
+        public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailService emailService, IAppUserService appUserService = null)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService;
+            _appUserService = appUserService;
         }
 
 
@@ -46,25 +49,28 @@ namespace TraversalCore.UI.Controllers
             {
                 Name = p.Name,
                 SurName = p.Surname,
+                ImageUrl = p.ImageUrl,
                 Email = p.Mail,
                 UserName = p.UserName,
+                PhoneNumber=p.Phonenumber,
             };
+            if (p.Password == null) { TempData["error"] = " şifre kısmı poş geçilemez !"; return View(); }
+
             if (p.Password==p.ConfirmPassword)
             {
                 var result = await _userManager.CreateAsync(appUser,p.Password);
+                
                 if (result.Succeeded)
                 {
                     return RedirectToAction("SingIn");
                 }
                 else
                 {
-                    foreach (var item in result.Errors)
-                    {
-                        ModelState.AddModelError("", item.Description);
-                    }
+                    TempData["error"] = "Girdiğiniz şifreler uyuşmuyor !";
+                    return View();
                 }
             }
-           return View();
+            return View();
         }
         [HttpGet]
         public IActionResult SingIn()
@@ -84,7 +90,7 @@ namespace TraversalCore.UI.Controllers
                 }
                 else
                 {
-                    TempData["error"] = "Giriş Hatalı";
+                    TempData["error"] = "Kullanıcı adı veya şifre hatalı";
                     return View();
                 }
             }
@@ -106,16 +112,26 @@ namespace TraversalCore.UI.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult DeleteUser(int id)
+        {
+            var values = _appUserService.GetById(id);
+            _appUserService.Delete(values);
+            return RedirectToAction("SingIn");
+        }
 
         [HttpPost]
         public async Task<IActionResult> ForgetPassword(ForgetPsswordViewModel request)
         {
+            if (request.Email == null) { TempData["error"] = " Lütfen email adresinizi giriniz !"; return View(); }
+
             var hasUser = await _userManager.FindByEmailAsync(request.Email);
             if (hasUser==null)
             {
                 TempData["error"]=("Bu email adresine sahip kullanıcı bulunamadı");
                 return View();
             }
+
             string passwordResetToken =await _userManager.GeneratePasswordResetTokenAsync(hasUser);
             var passwordResetLink = Url.Action("ResetPassword", "Login",new {userId=hasUser.Id, Token=passwordResetToken},HttpContext.Request.Scheme);
 
@@ -124,6 +140,7 @@ namespace TraversalCore.UI.Controllers
             TempData["success"] = "Şifre yenileme linki, eposta adresinize gönderilmiştir.";
             return RedirectToAction(nameof(ForgetPassword));
         }
+
         [HttpGet]
         public  IActionResult ResetPassword(string userId,string token)
         {
