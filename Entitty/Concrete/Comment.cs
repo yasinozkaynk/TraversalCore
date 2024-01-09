@@ -18,6 +18,6 @@ namespace Entity.Concrete
         public bool CommentState { get; set; }
 
         public int DestinationID { get; set; }
-        public Destination Destination { get; set; }
+
     }
 }

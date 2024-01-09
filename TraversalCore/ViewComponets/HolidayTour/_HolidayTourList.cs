@@ -9,9 +9,9 @@ namespace TraversalCore.ViewComponets.HolidayTour
 {
     public class _HolidayTourList : ViewComponent
     {
-        IHoildayTourService _hoildayTourService;
+        IHolidayTourService _hoildayTourService;
 
-        public _HolidayTourList(IHoildayTourService hoildayTourService)
+        public _HolidayTourList(IHolidayTourService hoildayTourService)
         {
             _hoildayTourService = hoildayTourService;
         }

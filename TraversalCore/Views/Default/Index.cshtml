@@ -1,18 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
 @await Component.InvokeAsync("_SliderPartial")
-@await Component.InvokeAsync("_OferList")
-@await Component.InvokeAsync("_Statistics")
-<br />
-<br />
-<br />
 @await Component.InvokeAsync("_TrendCategoryList")
-@await Component.InvokeAsync("_PopularDestinations")
+@await Component.InvokeAsync("_TrendHotels")
+@await Component.InvokeAsync("_OferList")
+@await Component.InvokeAsync("_MostPreferredHotels")
 @await Component.InvokeAsync("_TrendTourList")
 @await Component.InvokeAsync("_TrendShipTourList")
-
 @await Component.InvokeAsync("_SubAbout")
 @await Component.InvokeAsync("_TrendCultureTourList")

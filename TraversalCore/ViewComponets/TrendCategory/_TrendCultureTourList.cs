@@ -9,17 +9,14 @@ namespace TraversalCore.ViewComponets.TrendCategory
 {
     public class _TrendCultureTourList : ViewComponent
     {
-        IDestinationService _destinationService;
 
-        public _TrendCultureTourList(IDestinationService destinationService)
+        public _TrendCultureTourList()
         {
-            _destinationService = destinationService;
         }
 
         public IViewComponentResult Invoke()
         {
-            var result = _destinationService.GetList();
-            return View(result);
+            return View();
         }
     }
 }

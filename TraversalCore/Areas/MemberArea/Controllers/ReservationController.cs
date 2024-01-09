@@ -9,53 +9,62 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TraversalCore.Areas.MemberArea.Models;
+using TraversalCore.Models;
+using TraversalCore.Services;
 
 namespace TraversalCore.Areas.MemberArea.Controllers
 {
     [Area("MemberArea")]
+    [Route("MemberArea/[controller]/[action]")]
+
     public class ReservationController : Controller
     {
-        IDestinationService _destinationService;
-        IReservationService _reservationService;
+        IHolidayTourReservationService _reservationService;
+        ICartService _cartService;
+        private ICartSessionService _cartSessionService;
+
         private readonly UserManager<AppUser> _userManager;
 
-        public ReservationController(IReservationService reservationService, IDestinationService destinationService, UserManager<AppUser> userManager)
+        public ReservationController(IHolidayTourReservationService reservationService, UserManager<AppUser> userManager, ICartService cartService, ICartSessionService cartSessionService = null)
         {
             _reservationService = reservationService;
-            _destinationService = destinationService;
             _userManager = userManager;
+            _cartService = cartService;
+            _cartSessionService = cartSessionService;
+        }
+        public IActionResult Index()
+        {
+            var values = _userManager.GetUserAsync(HttpContext.User).Result;
+            var model = new ReservationViewModel
+            {
+                AppUserId = values.Id,
+                Name = values.Name,
+                Surname=values.SurName,
+                Cart = _cartSessionService.GetCart(),
+
+            };
+            return View(model);
         }
 
-        public async Task<IActionResult> MyCurrentReservation()
+        [HttpPost]
+        public IActionResult AddReservation(HolidayTourReservation holidayTourReservation)
         {
-            var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            var valuesList = _reservationService.GetListWithReservationByAccepted(values.Id);
-            return View(valuesList);
-        }
-        public async Task<IActionResult> MyOldReservation()
-        {
-            var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            var valuesList = _reservationService.GetListWithReservationByPrevious(values.Id);
-            return View(valuesList);
-        }
-        public async Task<IActionResult> MyApprovalReservation()
-        {
-            var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            var valuesList = _reservationService.GetListWithReservationByWaitAprroval(values.Id);
-            return View(valuesList);
+           
+            _reservationService.Add(holidayTourReservation);
+            return RedirectToAction("SuccessReservation");
         }
 
-        [HttpGet]
-        public IActionResult NewReservation()
+        public IActionResult SuccessReservation()
         {
-            List<SelectListItem> values = (from x in _destinationService.GetList()
-                                           select new SelectListItem
-                                           {
-                                               Text = x.City,
-                                               Value = x.DestinationID.ToString()
-                                           }).ToList();
-            ViewBag.v = values;
             return View();
         }
+
+        public IActionResult ReservationList()
+        {
+            var result=_reservationService.GetAll();
+            return View(result);
+        }
+
     }
 }

@@ -29,13 +29,7 @@ namespace TraversalCore.UI.Controllers
             _emailService = emailService;
             _appUserService = appUserService;
         }
-
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-    
+ 
         [HttpGet]
         public IActionResult SingUp()
         {

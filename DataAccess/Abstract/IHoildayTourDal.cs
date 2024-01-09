@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IHoildayTourDal:IEntityRepository<HoildayTour>
+    public interface IHoildayTourDal:IEntityRepository<HolidayTour>
     {
     }
 }

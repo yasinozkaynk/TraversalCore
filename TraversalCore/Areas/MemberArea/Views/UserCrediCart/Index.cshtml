@@ -1,0 +1,255 @@
+﻿@model TraversalCore.Areas.MemberArea.Models.UserCrediCartViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+<link href="~/css/updateProfile.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+
+    .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 16px;
+        background-color: transparent;
+    }
+
+        .table thead tr th {
+            font-size: 17px;
+            font-weight: 300;
+        }
+
+        .table > thead > tr > th {
+            padding: 12px 8px;
+            vertical-align: middle;
+            border-color: #ddd;
+            font-weight: 300;
+        }
+
+        .table > tbody > tr > td {
+            padding: 12px 8px;
+            vertical-align: middle;
+            border-color: #ddd;
+            font-weight: 300;
+            font-size: 14px;
+            color: #3c4858;
+        }
+
+    .btn.btn-just-icon.btn-sm {
+        height: 30px;
+        min-width: 30px;
+        width: 30px;
+    }
+
+    .btn.btn-just-icon {
+        font-size: 24px;
+        height: 41px;
+        min-width: 41px;
+        width: 41px;
+        padding: 0 !important;
+        overflow: hidden;
+        position: relative;
+        line-height: 41px;
+    }
+
+    .btn.btn-success {
+        color: #fff !important;
+        background-color: #4caf50 !important;
+        border-color: #4caf50;
+        box-shadow: 0 2px 2px 0 rgba(76,175,80,.14), 0 3px 1px -2px rgba(76,175,80,.2), 0 1px 5px 0 rgba(76,175,80,.12) !important;
+    }
+
+        .btn.btn-success:hover {
+            box-shadow: 0 14px 26px -12px rgba(76,175,80,.42), 0 4px 23px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(76,175,80,.2) !important;
+            background: #47a44b !important;
+        }
+
+    .btn.btn-danger {
+        color: #fff !important;
+        background-color: #f44336 !important;
+        border-color: #f44336;
+        box-shadow: 0 2px 2px 0 rgba(244,67,54,.14), 0 3px 1px -2px rgba(244,67,54,.2), 0 1px 5px 0 rgba(244,67,54,.12) !important;
+    }
+
+        .btn.btn-danger:hover {
+            box-shadow: 0 14px 26px -12px rgba(244,67,54,.42), 0 4px 23px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(244,67,54,.2) !important;
+            background-color: #f33527 !important;
+        }
+
+</style>
+
+<section style="position:relative;top:30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" style="background-color:white">
+                <div class="content" id="aaa" style="height:100%;border:2px solid white;box-shadow: 0px 0px 30px lightgray;border-radius:20px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="dropdown-header" style="font-family: 'Times New Roman', Times, serif;font-size:18px;margin:10px;">
+                                <img style="height:50px;width:50px;border-radius:50px;position:relative;left:-10px;" src="@Model.Imageurl" />
+                                @Model.Name @Model.Surname
+                            </a>
+                            <a href="/Cart/Index" class="list-group-item list-group-item-action" style="font-family:'Times New Roman', Times, serif">Sepetim</a>
+                            <a href="/MemberArea/Profile/Index" class="list-group-item list-group-item-action" style="font-family:'Times New Roman', Times, serif">Profilim</a>
+                            <a href="/MemberArea/Profile/Update" class="list-group-item list-group-item-action" style="font-family:'Times New Roman', Times, serif">Hesap Ayarları</a>
+                            <a href="/MemberArea/UserCrediCard/Index" class="list-group-item list-group-item-action" style="font-family:'Times New Roman', Times, serif" data-toggle="modal">Banka Kartlarım</a>
+                            <a href="#myModal3" class="list-group-item list-group-item-action" style="font-family:'Times New Roman', Times, serif" data-toggle="modal">
+                                Oturumu Kapat
+                            </a>
+                            <a href="#myModal2" class="list-group-item list-group-item-action" style="font-family: 'Times New Roman', Times, serif; color: red;" data-toggle="modal">Hesabı Sil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9" style="background-color:white">
+                <div class="content" id="aaa" style="height:100%;border:2px solid #f7f7f7;box-shadow: 0px 0px 30px lightgray;border-radius:20px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row" style="position:relative;padding:30px 50px;">
+                                <h3>Banka Kartlarım</h3>
+                                <button type="button" class="btn btn-primary launch" data-toggle="modal" data-target="" href="#AddToCrediCart">
+                                  Kart Ekle
+                                </button>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th>İsim Soyisim</th>
+                                            <th>Kart Numarası</th>
+                                            <th>Son K. Tarihi</th>
+                                            <th>CVV</th>
+                                            <th class="text-right">Bakiye</th>
+                                            <th class="text-right"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.UserCrediCarts)
+                                        {
+                                            @if (item.UserId == Model.Id)
+                                            {
+                                                <tr>
+                                                    <td class="text-center"></td>
+                                                    <td>@item.Name</td>
+                                                    <td>@item.CartNumber</td>
+                                                    <td class="text-center">@item.ExpirationDate</td>
+                                                    <td>@item.CVV</td>
+                                                    <td class="text-right">@item.AvailableBalance</td>
+                                                    <td class="td-actions text-right">
+
+                                                        <a class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
+                                                            <svg style="position:relative;top:-3px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-highlighter" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M11.096.644a2 2 0 0 1 2.791.036l1.433 1.433a2 2 0 0 1 .035 2.791l-.413.435-8.07 8.995a.5.5 0 0 1-.372.166h-3a.5.5 0 0 1-.234-.058l-.412.412A.5.5 0 0 1 2.5 15h-2a.5.5 0 0 1-.354-.854l1.412-1.412A.5.5 0 0 1 1.5 12.5v-3a.5.5 0 0 1 .166-.372l8.995-8.07.435-.414Zm-.115 1.47L2.727 9.52l3.753 3.753 7.406-8.254-2.905-2.906Zm3.585 2.17.064-.068a1 1 0 0 0-.017-1.396L13.18 1.387a1 1 0 0 0-1.396-.018l-.068.065 2.85 2.85M5.293 13.5 2.5 10.707v1.586L3.707 13.5z" />
+                                                            </svg>
+                                                        </a>
+                                                        <a href="/MemberArea/UserCrediCart/RemoveToCrediCart/@item.Id" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
+                                                            <svg style="position:relative;top:-3px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="AddToCrediCart" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img style="width:150px;height:30px;position:relative;left:-100px;" src="https://tr.mormedikal.com/wp-content/uploads/2019/06/visa-logo-png-2026.png" /><br />
+                <a style="font-size: 18px; font-family: 'Times New Roman', Times, serif" class="text-center">Kart Ekle</a>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("AddToCrediCart", "UserCrediCart", FormMethod.Post))
+                {
+                    <div class="row form-group">
+                        <div class="col-md-12 ">
+                            @Html.Label("Kart üzerinde Yazan İsim Soyisim")
+                            @Html.TextBoxFor(x => x.userCrediCart.Name, new { @class = "form-control", @type = "text", @id = "input" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            @Html.Label("Kart Numarası")
+                            @Html.TextBoxFor(x => x.userCrediCart.CartNumber, new { @class = "form-control", @type = "text", @id = "input" })
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row form-group">
+                        <div class="col-md-7">
+                            @Html.Label("Son Kullanma Tarihi")
+                            @Html.TextBoxFor(x => x.userCrediCart.ExpirationDate, new { @class = "form-control", @type = "datetime", @id = "input" })
+
+                        </div>
+                        <div class="col-md-5">
+                            @Html.Label("CVV")
+                            @Html.TextBoxFor(x => x.userCrediCart.CVV, new { @class = "form-control", @type = "text", @id = "input" })
+                        </div>
+                    </div>
+                    @Html.TextBoxFor(x => x.userCrediCart.UserId, new { @class = "form-control", @type = "text", @id = "input" })
+                    <br />
+                    <button id="button" style="width:300px;border-radius:50px;" class=" btn btn-primary" type="submit">Gönder</button>
+
+                    <br />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal2" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="tf tf-ion-close"></i>
+                </div>
+                <h4 class="modal-title">Emin misiniz?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Bu hesabı gerçekten silmek istiyor musunuz?</p>
+                <p class="text-center"> Bu işlem geri alınamaz.</p>
+            </div>
+            <div class="modal-footer">
+                <a style="background-color: gray; color: white; border: 1px solid #d4d2d2" class="btn btn-info" data-dismiss="modal">Kapat</a>
+                <a style="background-color:red;color:white;border:1px solid #d4d2d2;" href="/Login/DeleteUser/@Model.Id" class="btn btn-danger">Sil</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal3" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="tf tf-ion-android-close"></i>
+                </div>
+                <h4 class="modal-title">Emin misiniz?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Oturum Kapatılıyor !</p>
+            </div>
+            <div class="modal-footer">
+                <a style="background-color: gray; color: white; border: 1px solid #d4d2d2" class="btn btn-info" data-dismiss="modal">Kapat</a>
+                <a style="background-color:red;color:white;border:1px solid #d4d2d2;" href="/Login/LogOff" class="btn btn-danger">Çıkış Yap</a>
+            </div>
+        </div>
+    </div>
+</div>

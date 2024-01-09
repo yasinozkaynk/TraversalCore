@@ -2,10 +2,10 @@
 @model List<Ofer>
 
 
-<section class="products related-products section">
+<section class="products related-products section" style="position:relative;top:-120px;">
     <div class="container">
         <div class="row">
-            <div class="title text">
+            <div class="title text-left">
                 <h1 style="color: #ff3131; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Özel Kampanyalar</h1>
             </div>
             <a class="text-left link link-danger" style="color: #ff3131; font-family: 'Franklin Gothic Medium'" href="/Ofer/Index">
@@ -13,7 +13,6 @@
             </a>
         </div>
         <br />
-
         <div class="row">
             @foreach (var item in Model)
             {

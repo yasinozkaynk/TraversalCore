@@ -1,32 +1,41 @@
 ﻿@using Entity.Concrete
 @model List<Subcategory>
 
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link href="~/css/card.css" rel="stylesheet" /><
 
-
-    <div class="row">
-        <div class="title text-center">
-            <h1 style="color: #ff3131; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Öne Çıkan Otel Kategorileri</h1>
-        </div>
+<div class="row">
+    <div class="title text-center">
+        <h1 style="color: #ff3131; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Öne Çıkan Kategoriler</h1>
     </div>
-    <div class="hero-slider">
-        @foreach (var item in Model)
-        {
-            @if (item.Status == true)
+</div>
+<div class="container">
+    <div class="slider-wrapper">
+        <button id="prev-slide" class="slide-button material-symbols-outlined">
+            chevron_left
+        </button>
+        <div class="image-list">
+            @foreach (var item in Model.Where(x => x.SubheadingId != 3))
             {
-                <div class="slider-item th-fullpage hero-area" style="background-image: url(@item.Image);">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 text-center">
-                                <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">
-                                    @item.CategoryName <br />   @item.Explanation
-                                </h1>
-                                <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="/Destination/Index/@item.Id">Ayrıntılar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @if (item.Status == true)
+                {
+                    <a href="/HotelTour/Index/@item.Id" style="background-image:url(@item.Image);border-radius:20px;" alt="img-1" class="image-item">
+                        <span style="font-weight:bold;font-size:22px;position:relative;top:330px;left:18px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white">@item.CategoryName</span>
+                        <hr style="color:red;position:relative;top:315px;left:-150px;width:30px;" />
+                        <span style="font-weight:bold;font-size:30px;position:relative;top:300px;left:20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white"> @item.Explanation<span style="font-size:15px;">'den itibaren</span> </span>
+                    </a>
+                }
             }
-
-        }
+        </div>
+        <button id="next-slide" class="slide-button  material-symbols-outlined">
+            chevron_right
+        </button>
     </div>
+</div>
+
+<script src="~/js/slider.js"></script>
+
+
 

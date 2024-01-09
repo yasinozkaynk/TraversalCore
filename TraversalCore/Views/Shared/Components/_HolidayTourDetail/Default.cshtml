@@ -1,0 +1,54 @@
+﻿@using TraversalCore.Models
+@model HolidayTourDetailViewModel
+
+
+<table class="table table-bordered">
+    <thead class="bg-gray">
+        <tr>
+            <th scope="col">Oda Türü</th>
+            <th scope="col">Tur Kapasitesi</th>
+            <th scope="col">Sabah Öğünü</th>
+            <th scope="col">Öğle Öğünü</th>
+            <th scope="col">Akşam Öğünü</th>
+            <th scope="col">Kalan Kapasite</th>
+            <th scope="col">Yetişkin Fiyatı (Birim Fiyat)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.HolidayTourCardDTOs.PaketName</td>
+            <td>@Model.HolidayTourCardDTOs.TourCapacity</td>
+            @if (Model.HolidayTourCardDTOs.MorningMeal == true || Model.HolidayTourCardDTOs.Dinner == true)
+            {
+                <td>Var</td>
+            }
+            else
+            {
+                <td>Yok</td>
+            }
+            @if (Model.HolidayTourCardDTOs.Lunch == true)
+            {
+                <td>Var</td>
+            }
+            else
+            {
+                <td>Yok</td>
+            }
+            @if (Model.HolidayTourCardDTOs.Dinner == true)
+            {
+                <td>Var</td>
+            }
+            else
+            {
+                <td>Yok</td>
+            }
+            <td>@Model.HolidayTourCardDTOs.RemainingCapacity</td>
+
+            <td><input style="width:60px;" type="number" disabled id="yetiskinInput" value="@Model.HolidayTourCardDTOs.TourPrice"></td>
+
+            <td><a class="btn" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.HolidayTourCardDTOs.HolidayTourId" id="btn_rezervation">rezervasyon yap</a></td>
+        </tr>
+    </tbody>
+</table>
+
+

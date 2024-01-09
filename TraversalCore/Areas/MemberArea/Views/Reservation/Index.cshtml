@@ -1,0 +1,168 @@
+﻿@model TraversalCore.Areas.MemberArea.Models.ReservationViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+<style>
+    #input {
+        margin: 10px 10px;
+        width: 300px;
+    }
+</style>
+<section style="position:relative;top:10px;">
+    <div class="container">
+        <div class="row">
+            @using (Html.BeginForm("AddReservation", "Reservation", FormMethod.Post))
+            {
+                <form style="background-color:white;" novalidate class="box" name="Update" method="post">
+
+                    <div class="col-md-8" style="background-color:white">
+                        <h3>Reservasyon Bilgileri</h3>
+                        <small>
+                            Kişisel verilerinizin işlenmesi ile ilgili detaylara <b>Setur Müşteri Kişisel Verilerin İşlenmesi Aydınlatma Metni</b>’nden ulaşabilirsiniz.
+                        </small><br /><br />
+                        <div class="content" id="aaa" style="height:100%;border:2px solid #f7f7f7;box-shadow: 0px 0px 30px lightgray">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row" style="position:relative;top:-10px;">
+                                        <div class="col-md-12">
+                                            <a style="font-size: 18px; font-family: 'Times New Roman', Times, serif;top:10px; position:relative" class="text-center">Kişisel Bilgiler</a><br /><br />
+                                            <div class="row form-group">
+                                                <div class="col-md-6 ">
+                                                    <a>Müşteri Numarası</a>
+                                                    <input disapled type="text" name="AppUserId" id="input" value="@Model.AppUserId" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-6 ">
+                                                    <a>Adınız</a>
+                                                    <input disapled type="text" name="Name" id="input" value="@Model.Name" class="form-control" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a>Soyadınız</a>
+                                                    <input type="text" name="Surname" value="@Model.Surname" id="input" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8" style="background-color:white">
+                        <div class="content" id="aaa" style="height:100%;border:2px solid #f7f7f7;box-shadow: 0px 0px 30px lightgray">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row" style="position:relative;top:-10px;">
+                                        <div class="col-md-12">
+                                            <a style="font-size: 18px; font-family: 'Times New Roman', Times, serif;top:10px; position:relative" class="text-center">Kart Bilgileri</a><br /><br />
+                                            <div class="row form-group">
+                                                <div class="col-md-6 ">
+                                                    <a>Kart Üzerinde Yazan İsim Soyisim</a>
+                                                    <input disapled type="text" name="AppUserId" id="input" value="" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-6 ">
+                                                    <a>Kart Numarası</a>
+                                                    <input disapled type="text" name="Name" id="input" value="" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-6 ">
+                                                    <a>CVV</a>
+                                                    <input disapled type="text" name="Name" id="input" value="" class="form-control" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a>Son Kullanma Tarihi</a>
+                                                    <input type="date" name="Surname" value="" id="input" class="form-control" />
+                                                </div>
+                                            </div>
+                                            @foreach (var item in Model.Cart.CartLines)
+                                            {
+                                                <div class="row form-group">
+                                                    <div class="col-md-6">
+                                                        <a>Tur Numarası</a>
+                                                        <input type="text" disabled name="HolidayTourId" value="@item.holidayTourCardDTOs.Id" id="input" class="form-control" />
+                                                    </div>
+                                                </div>
+                                            }
+                                            <br />
+                                            <button type="submit" style="font-size:16px;color:white;background-color:red;width:400px;height:45px;font-family:'Times New Roman', Times, serif;position:relative; " class="btn btn-main text-center">Reservasyon Yap</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            }
+
+
+            <div class="col-md-4" style="background-color:white">
+                <div class="content" id="aaa" style="height:100%;border:2px solid #f7f7f7;box-shadow: 0px 0px 30px lightgray;top:-270px;position:relative;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row" style="position:relative;top:-10px;">
+                                @foreach (var item in Model.Cart.CartLines)
+                                {
+                                    <div class="col-md-12">
+                                        <img style="height:200px;width:100%;padding:20px 10px;" src="@item.holidayTourCardDTOs.Image" />
+                                    </div>
+                                    <div class="col-md-12" style="width:300px;left:10px;position:relative;height:100%">
+
+                                        <div class="col-md-12" style="padding:0px 5px;">
+                                            <h4 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">@item.holidayTourCardDTOs.Title</h4><br />
+                                            <hr style="height:2px;border-width:inherit;color:lightgrey;background-color:lightgrey;top:-40px;position:relative;left:30px" />
+                                        </div>
+                                        <div style="position:relative;top:-40px;">
+                                            <div class="col-md-5">
+                                                <small style="position:relative;font-weight:bold;">Tur Tarihi</small><br />
+                                                <small style="position:relative;font-weight:bold;">Tur Tipi</small><br />
+                                                <small style="position:relative;font-weight:bold;">Misafir</small><br />
+                                                <small style="position:relative;font-weight:bold;">Seçilen Paket</small><br />
+                                            </div>
+                                            <div style="position:relative;text-align:right;left:50px;">
+                                                <a class="text-left">@item.holidayTourCardDTOs.Subtitle </a>
+                                                <a class="text-left">Kültür Turları </a>
+                                                <br />
+                                                <a class="text-left">1 Yetişkin</a><br />
+                                                <a class="text-left">@item.holidayTourCardDTOs.PaketName</a><br />
+                                            </div>
+                                        </div>
+                                        <hr style="height:2px;border-width:inherit;color:lightgrey;background-color:lightgrey;top:-40px;position:relative;left:30px" />
+                                        <div style="position:relative;top:-40px;">
+                                            <div class="col-md-5">
+                                                <small style="position:relative;font-weight:bold;">Tur Bedeli</small><br />
+                                            </div>
+                                            <div style="position:relative;text-align:right;left:50px;">
+                                                <a class="text-left">@item.holidayTourCardDTOs.TourPrice </a><br />
+                                            </div>
+                                        </div>
+                                        <hr style="height:2px;border-width:inherit;color:lightgrey;background-color:lightgrey;top:-40px;position:relative;left:30px" />
+                                        <div style="position:relative;top:-40px;">
+                                            <div class="col-md-8">
+                                                <small style="position:relative;font-weight:bold;">Ödeyeceğiniz Tutar</small><br />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="position:relative;text-align:right;left:40px;top:-40px">
+                                            <b style="font-size:28px;">
+                                                @Model.Cart.Total ₺
+
+                                            </b>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,5 +1,4 @@
-﻿@using Entity.Concrete
-@model List<Destination>
+﻿
 
 <head>
     <style>
@@ -48,23 +47,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        @foreach (var item in Model.Where(x=>x.CategoryId==16))
-                        {
-                            <div class="col-md-6" style="margin-top:10px;">
-                                <div class="card">
-                                    <a href="/Destination/DestinationDetail/@item.DestinationID">
-                                        <img src="@item.Image" style="width:700px;height:230px;" class="card-img-top" alt="...">
-                                    </a>
-                                    <div class="Kutu-description">
-                                        <h2>@item.City</h2>
-                                        <p>
-                                            @item.DayNight && @item.Price ₺'den başlayan fiyatlarla
-                                        </p>
 
-                                    </div>
+                        <div class="col-md-6" style="margin-top:10px;">
+                            <div class="card">
+                                <a href="">
+                                    <img src="" style="width:700px;height:230px;" class="card-img-top" alt="...">
+                                </a>
+                                <div class="Kutu-description">
+                                    <h2></h2>
+                                    <p>
+                                        ₺'den başlayan fiyatlarla
+                                    </p>
+
                                 </div>
                             </div>
-                        }
+                        </div>
+
                     </div>
                 </div>
             </div>

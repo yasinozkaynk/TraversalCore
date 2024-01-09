@@ -44,15 +44,7 @@ namespace Business.Concrete
             return _commentDal.GetAll(x=>x.DestinationID==id);
         }
 
-        public List<Comment> TGetListCommentWithDestination()
-        {
-            return _commentDal.GetListCommentWithDestination();
-        }
-
-        public List<Comment> TGetListCommentWithDestinationAndUser(int id)
-        {
-            return _commentDal.GetListCommentWithDestinationAndUser(id);
-        }
+   
 
         public void Update(Comment comment)
         {

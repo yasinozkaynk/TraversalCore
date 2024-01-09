@@ -1,0 +1,122 @@
+﻿@model TraversalCore.Models.CartSummaryViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+
+<section style="position:relative;top:30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8" style="background-color:white">
+                <div class="content" id="aaa" style="height:100%;border:2px solid #f7f7f7;box-shadow: 0px 0px 30px lightgray">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div style="padding:0px 40px;">
+                                <h3 style="font-size:25px;font-family: 'Franklin Gothic Medium'">Sepetim</h3>
+                            </div>
+
+                            @foreach (var item in Model.Cart.CartLines)
+                            {
+                                <div class="row" style="position:relative;top:-10px;">
+
+                                    <hr />
+                                    <div class="col-md-12" style="left:10px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-suitcase2" viewBox="0 0 16 16">
+                                            <path d="M6.5 0a.5.5 0 0 0-.5.5V3H5a2 2 0 0 0-2 2v8a2 2 0 0 0 1.031 1.75A1.003 1.003 0 0 0 5 16a1 1 0 0 0 1-1h4a1 1 0 1 0 1.969-.25A2 2 0 0 0 13 13V5a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-.5-.5zM9 3H7V1h2zm3 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7h8zM5 4h6a1 1 0 0 1 1 1v1H4V5a1 1 0 0 1 1-1" />
+                                        </svg><small style="top:-4px;position:relative;">@item.holidayTourCardDTOs.Subtitle</small>
+
+                                        <a class="" asp-controller="Cart" asp-action="RemoveToCart" asp-route-id="@item.holidayTourCardDTOs.Id" style="left:500px;position:relative;color:red">
+                                            <svg xmlns="http://www.w3.org/2000/svg" style="color:red" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img style="height:200px;width:80%;padding:10px 40px;" src="@item.holidayTourCardDTOs.Image" />
+                                    </div>
+                                    <div class="col-md-6" style="padding:30px 0px;left:-100px;">
+                                        <p class="card-text" style="font-family:'Franklin Gothic Medium';font-size:20px">
+                                            @item.holidayTourCardDTOs.Title
+                                        </p>
+                                        <small>@item.holidayTourCardDTOs.Subtitle</small><br /><br />
+                                        <table class="table table-bordered">
+                                            <thead class="bg-gray">
+                                                <tr>
+                                                    <th scope="col">Oda Türü</th>
+                                                    <th scope="col">Kalan Kapasite</th>
+                                                    <th scope="col">Tur Fiyatı (Birim Fiyat)</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>@item.holidayTourCardDTOs.PaketName</td>
+                                                    <td>@item.holidayTourCardDTOs.RemainingCapacity</td>
+                                                    <td>@item.holidayTourCardDTOs.TourPrice ₺</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <br />
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" style="background-color:white">
+                <div class="content" id="aaa" style="height:100%;border:2px solid #f7f7f7;box-shadow: 0px 0px 30px lightgray">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row" style="position:relative;top:-10px;">
+                                <div style="padding:0px 40px;">
+                                    <h3 style="font-size:25px;font-family: 'Franklin Gothic Medium'">Rezervasyon Özeti</h3>
+                                </div>
+                                @foreach (var item in Model.Cart.CartLines)
+                                {
+                                    <div class="col-md-12" style="border:2px solid lightgray;width:300px;padding:10px 10px;left:40px;position:relative;height:100%">
+                                        <div class="col-md-12" style="padding:5px 5px;">
+                                            <b>Tur</b>
+                                            <small style="left:90px;position:relative;">@item.holidayTourCardDTOs.Subtitle</small><br />
+                                            <a>@item.holidayTourCardDTOs.Title</a><br />
+
+                                        </div>
+                                        <div class="col-md-6" style="padding:5px 5px">
+                                            <a style="padding:0px 2px;position:relative;font-weight:bold;">1 Yetişkin</a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <br />
+                                            <b style="font-size:18px;"> @item.holidayTourCardDTOs.TourPrice ₺ </b> <br />
+                                           
+                                        </div>
+                                    </div>
+                                    <br />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="container col-md-12" style="padding:20px 10px;height:100%;border:2px solid #f7f7f7;box-shadow: 0px 0px 30px lightgray">
+                    <div class="col-md-7">
+                        <a style="font-size:19px;font-family: 'Franklin Gothic Medium'">Toplam Fiyat</a><br />
+                        <b style="font-size:23px;left:20px" id="toplam">
+                            @Model.Cart.Total ₺
+                        </b>
+                    </div>
+                    <div class="col-md-5">
+                        <a class="btn btn-danger "  style="font-size:18px;font-family: 'Franklin Gothic Medium';padding:15px 10px;height:60px;width:120px;background-color:red;color:white;border:1px solid red;box-shadow: 0px 0px 20px red" href="/MemberArea/Reservation/Index">Devam Et</a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

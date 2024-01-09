@@ -62,14 +62,6 @@ namespace TraversalCore.Areas.MemberArea.Controllers
         public async Task<IActionResult> Update(UserEditViewModel p)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-
-            //var resource = Directory.GetCurrentDirectory();
-            //var extension = Path.GetExtension(p.imageurl.FileName);
-            //var imagename = Guid.NewGuid() + extension;
-            //var savelocation = resource + "/wwwroot/userimages/" + imagename;
-            //var stream = new FileStream(savelocation, FileMode.Create);
-            //await p.Image.CopyToAsync(stream);
-            //user.ImageUrl = imagename;
             user.UserName = HttpContext.User.Identity.Name;
             user.Name = p.name;
             user.SurName = p.surname;

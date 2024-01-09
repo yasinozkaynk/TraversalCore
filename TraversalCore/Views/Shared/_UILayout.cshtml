@@ -6,6 +6,14 @@
 <html lang="zxx">
 
 @await Html.PartialAsync("/Views/LayoutPartial/_HeaderPartial.cshtml")
+<head>
+    <style>
+        .body::-webkit-scrollbar {
+            display:none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
 <body class="">
 
     @await Html.PartialAsync("/Views/LayoutPartial/_Navbar2Partial.cshtml")

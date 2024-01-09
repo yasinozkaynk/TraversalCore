@@ -19,11 +19,7 @@ namespace TraversalCore.Admin.Controllers
             _commentService = commentService;
         }
 
-        public IActionResult Index()
-        {
-            var values = _commentService.TGetListCommentWithDestination();
-            return View(values);
-        }
+
 
         public IActionResult DeleteComment(int id)
         {

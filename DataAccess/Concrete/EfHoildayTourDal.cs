@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete
 {
-    public class EfHoildayTourDal:EfEntityRepositoryBase<HoildayTour,Context>,IHoildayTourDal
+    public class EfHoildayTourDal:EfEntityRepositoryBase<HolidayTour,Context>,IHoildayTourDal
     {
     }
 }

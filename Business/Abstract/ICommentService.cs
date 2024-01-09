@@ -16,7 +16,6 @@ namespace Business.Abstract
         List<Comment> GetAll();
         Comment GetById(int id);
         List<Comment> GetDestinationById(int id);
-        List<Comment> TGetListCommentWithDestination();
-        List<Comment> TGetListCommentWithDestinationAndUser(int id);
+
     }
 }

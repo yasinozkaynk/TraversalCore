@@ -1,0 +1,168 @@
+﻿@using Entity.Concrete
+@model List<HotelTour>
+
+<style>
+
+    .content_box .content {
+        display: none;
+    }
+
+        .content_box .content.active {
+            display: block;
+        }
+
+        .content_box .content h2 {
+            margin-bottom: 10px;
+        }
+
+    .tab_box {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 2px solid rgb(229,229,229);
+        font-size: 18px;
+        position: relative;
+    }
+
+        .tab_box .tab_btn {
+            font-size: 18px;
+            font-weight: 600;
+            color: #919191;
+            background: none;
+            border: none;
+            padding: 18px;
+            cursor: pointer;
+        }
+
+            .tab_box .tab_btn.active {
+                font-size: 18px;
+                font-weight: 600;
+                background: none;
+                border: none;
+                padding: 18px;
+                cursor: pointer;
+                color: red;
+            }
+
+    .line {
+        position: absolute;
+        top: 62px;
+        left: -90px;
+        width: 120px;
+        height: 5px;
+        background-color: red;
+        border-radius: 10px;
+        -ms-scroll-translation: initial;
+    }
+
+</style>
+
+
+<div class="container" style="position:relative;top:-100px;">
+    <div class="row">
+        <div class="title">
+            <h1 style="color: #ff3131; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">En Çok Tercih Edilen Oteller</h1>
+        </div>
+        <div class="col-md-4" style="position:relative;left:100px;top:-20px;">
+            <div class="tab_box">
+                <button class="tab_btn">Antalya</button>
+                <button class="tab_btn">İzmir</button>
+                <button class="tab_btn">Belek</button>
+                <button class="tab_btn">Marmaris</button>
+                <button class="tab_btn">Çanakkale</button>
+                <div class="line"></div>
+            </div>
+        </div>
+        <br /><br /><br /><br />
+
+        <div class="col-md-12">
+            <div class="content_box">
+                <div class="content active">
+                    <div class="slider-wrapper" style="position:relative;left:-20px;">
+                        <div class="image-list">
+                            @foreach (var item in Model.Where(x => x.CategoryId == 5))
+                            {
+
+                                <a href="/HotelTour/HotelTourDetail/@item.Id" style="background-image:url(@item.Image1);border-radius:20px;" alt="img-1" class="image-item">
+                                    <span style="font-weight:bold;font-size:18px;position:relative;top:330px;left:18px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white">@item.City</span>
+                                    <hr style="color:red;position:relative;top:315px;left:-150px;width:30px;" />
+                                    <span style="font-weight:bold;font-size:22px;position:relative;top:300px;left:20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white"> @item.HotelName</span>
+                                </a>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="slider-wrapper" style="position:relative;left:-20px;">
+                        <div class="image-list">
+                            @foreach (var item in Model.Where(x => x.CategoryId == 4))
+                            {
+                                <a href="/HotelTour/HotelTourDetail/@item.Id" style="background-image:url(@item.Image1);border-radius:20px;" alt="img-1" class="image-item">
+                                    <span style="font-weight:bold;font-size:18px;position:relative;top:330px;left:18px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white">@item.City</span>
+                                    <hr style="color:red;position:relative;top:315px;left:-150px;width:30px;" />
+                                    <span style="font-weight:bold;font-size:22px;position:relative;top:300px;left:20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white"> @item.HotelName</span>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="slider-wrapper" style="position:relative;left:-20px;">
+                        <div class="image-list">
+                            @foreach (var item in Model.Where(x => x.CategoryId == 1))
+                            {
+                                <a href="/HotelTour/HotelTourDetail/@item.Id" style="background-image:url(@item.Image1);border-radius:20px;" alt="img-1" class="image-item">
+                                    <span style="font-weight:bold;font-size:18px;position:relative;top:330px;left:18px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white">@item.City</span>
+                                    <hr style="color:red;position:relative;top:315px;left:-150px;width:30px;" />
+                                    <span style="font-weight:bold;font-size:22px;position:relative;top:300px;left:20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white"> @item.HotelName</span>
+                                </a>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="slider-wrapper" style="position:relative;left:-20px;">
+                        <div class="image-list">
+                            @foreach (var item in Model.Where(x => x.CategoryId == 6))
+                            {
+
+                                <a href="/HotelTour/HotelTourDetail/@item.Id" style="background-image:url(@item.Image1);border-radius:20px;" alt="img-1" class="image-item">
+                                    <span style="font-weight:bold;font-size:18px;position:relative;top:330px;left:18px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white">@item.City</span>
+                                    <hr style="color:red;position:relative;top:315px;left:-150px;width:30px;" />
+                                    <span style="font-weight:bold;font-size:22px;position:relative;top:300px;left:20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white"> @item.HotelName </span>
+                                </a>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="slider-wrapper" style="position:relative;left:-20px;">
+                        <div class="image-list">
+                            @foreach (var item in Model.Where(x => x.CategoryId == 2))
+                            {
+                                <a href="/HotelTour/HotelTourDetail/@item.Id" style="background-image:url(@item.Image1);border-radius:20px;" alt="img-1" class="image-item">
+                                    <span style="font-weight:bold;font-size:18px;position:relative;top:330px;left:18px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white">@item.City</span>
+                                    <hr style="color:red;position:relative;top:315px;left:-150px;width:30px;" />
+                                    <span style="font-weight:bold;font-size:22px;position:relative;top:300px;left:20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:white"> @item.HotelName</span>
+                                </a>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/js/tabs.js"></script>
+<script src="~/js/slidertwo.js"></script>
+
+

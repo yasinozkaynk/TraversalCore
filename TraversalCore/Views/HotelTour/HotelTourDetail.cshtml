@@ -20,6 +20,8 @@
             }
     </style>
 </head>
+<hr class="message-inner-separator">
+
 <section class="products related-products section" style="background-color:white;">
     <div class="container bg-white">
         <div class="row">
@@ -177,7 +179,6 @@
 
 @await Component.InvokeAsync("_HotelTourDetail", new { id = ViewBag.i })
 @await Component.InvokeAsync("_CommentList", new { id = ViewBag.i })
-@await Component.InvokeAsync("_TrendHotels")
 
 
 

@@ -37,10 +37,5 @@ namespace TraversalCore.Admin.Controllers
             _appUserService.GetAll();
             return View();
         }
-        public IActionResult ReservationUser(int id)
-        {
-            var values = _reservationService.GetListWithReservationByAccepted(id);
-            return View(values);
-        }
     }
 }
