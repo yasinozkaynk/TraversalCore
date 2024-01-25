@@ -13,6 +13,8 @@ namespace Business.Abstract
         void Update(HolidayTourReservation reservation);
         void Delete(HolidayTourReservation reservation);
         List<HolidayTourReservation> GetAll();
+        List<HolidayTourReservation> GetAllById(int id);
+
         HolidayTourReservation GetById(int id);
 
     }

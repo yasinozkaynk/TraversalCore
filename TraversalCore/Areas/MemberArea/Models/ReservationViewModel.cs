@@ -13,6 +13,7 @@ namespace TraversalCore.Areas.MemberArea.Models
         public DateTime ReservastionDate { get; set; }
         public bool Status { get; set; }
         public Cart Cart  { get; set; }
+        public UserCrediCart UserCrediCart { get; set; }
         public CartLine CartLine   { get; set; }
         public HolidayTour HolidayTour { get; set; }
         public HolidayTourReservation HolidayTourReservation { get; set; }

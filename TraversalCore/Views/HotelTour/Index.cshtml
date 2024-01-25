@@ -62,6 +62,42 @@
             padding: 8px 18px;
             border-radius: 60px;
         }
+
+        .buttonara {
+            background-color: white;
+            border: 1px solid red;
+            color: red;
+            top: 10px;
+            width: 180px;
+            position: relative;
+            height: 30px;
+            padding: 5px;
+            border-radius: 18px;
+        }
+
+            .buttonara:hover {
+                background-color: #ff3131;
+                box-shadow: 0px 0px 10px red;
+                color: white;
+            }
+
+        .buttonsil {
+            background-color: white;
+            border: 1px solid red;
+            color: red;
+            top: 10px;
+            position: relative;
+            padding: 5px;
+            border-radius: 60px;
+            width: 60px;
+            height: 30px;
+        }
+
+            .buttonsil:hover {
+                background-color: #ff3131;
+                box-shadow: 0px 0px 10px red;
+                color: white;
+            }
     </style>
 </head>
 
@@ -76,7 +112,7 @@
         </a>
     </div> *@
     <section class="products section">
-        <div class="container">
+        <div class="container" id="cardsContainer">
             <div class="row">
                 <div class="col-md-3">
                     <div class="widget product-category">
@@ -92,7 +128,27 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="panel-group commonAccordion">
+                            <div class="panel panel-default">
+                                <div class="card" id="fillter">
+                                    <h4 class="panel-title">
+                                        <a style="font-family: 'Times New Roman', Times, serif; font-weight: bold">
+                                            Fiyat ARALIĞI...
+                                        </a>
+                                        <label for="minPrice">Min Fiyat:</label>
+                                        <input type="number" id="minPrice" placeholder="Min Fiyat" />
+
+                                        <label for="maxPrice">Max Fiyat:</label>
+                                        <input type="number" id="maxPrice" placeholder="Max Fiyat" />
+
+                                        <button style="border:1px solid red;" class="buttonara" onclick="filterByPrice()">Fiyata Göre Filtrele</button>
+                                        <button class="buttonsil" onclick="resetFilter()"> Sıfırla</button>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                 
                 </div>
                 <div class="col-md-9 ">
                     <div class="card" style="position:relative;top:-40px;">
@@ -108,13 +164,13 @@
                         </small><br /><br />
                         <a href="#" class="button1"><i style="color:white" class="tf-ion-alert-circled"></i></a>
                         <a href="#" class="button2 ">Popüler</a>
-                        <a href="#" class="button2 ">Fiyata Göre (Artan)</a>
-                        <a href="#" class="button2 ">Fiyata Göre (Azalan)</a>
+                        <a href="#" onclick="sortAscending()" class="button2 ">Fiyata Göre (Artan)</a>
+                        <a href="#" onclick="sortDescending()" class="button2 ">Fiyata Göre (Azalan)</a>
                     </div>
 
                     @foreach (var item in Model)
                     {
-                        <div class="content" id="aaa" style="background-color:white;border:2px solid lightgray;border-radius:20px;height:100%;box-shadow: 0px 0px 10px lightgray">
+                        <div class="card" id="cardsContainer" style="background-color:white;border:2px solid lightgray;border-radius:20px;height:100%;box-shadow: 0px 0px 10px lightgray">
                             <div class="col-md-4">
                                 <div class="card-body  single-product-slider">
                                     <div id='carousel-custom' style="height:100%;" class='carousel slide ' data-ride='carousel'>
@@ -155,10 +211,10 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="card" >
-                                        <div class="text-center" style="position:relative;top:100px;">
-                                            <b style="font-size:25px;position:relative;left:40px;top:-50px;font-family:Lucida Console,Courier New,monospace;font-weight:bold">
+                                        <div class="price-details text-center" style="position:relative;top:100px;">
+                                            <h3 class="price" style="font-size:25px;position:relative;left:40px;top:-50px;font-family:Lucida Console,Courier New,monospace;font-weight:bold">
                                                 @item.Price ₺ <br />
-                                            </b>
+                                            </h3>
                                             <small style="position:relative;left:40px;top:-50px;">Başlayan Fiyatlarla</small><br /><br />
                                             <a href="/HotelTour/HotelTourDetail/@item.Id" class="button " style="left:40px;position:relative;top:-50px;box-shadow: 0px 0px 10px red">Ayrıntılar</a>
                                         </div>
@@ -179,6 +235,9 @@
         integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c="
         crossorigin="anonymous"></script>
 
+
+
+
 <script>
     $(function () {
         $("#inputFilter").on("keyup", function () {
@@ -188,5 +247,61 @@
             });
         });
     });
-</script>
 
+    function sortAscending() {
+        let prices = getHotelPrices();
+        prices.sort((a, b) => a - b);
+        updateUIWithSortedPrices(prices);
+    }
+
+    function sortDescending() {
+        let prices = getHotelPrices();
+        prices.sort((a, b) => b - a);
+        updateUIWithSortedPrices(prices);
+    }
+
+    function getHotelPrices() {
+        let priceElements = document.querySelectorAll('.price-details h3');
+        let prices = Array.from(priceElements).map(element => {
+            return parseInt(element.innerText.trim());
+        });
+        return prices;
+    }
+
+    function updateUIWithSortedPrices(prices) {
+        let priceElements = document.querySelectorAll('.price-details h3');
+        prices.forEach((price, index) => {
+            priceElements[index].innerText = price + ' TL';
+        });
+    }
+
+
+    function filterByPrice() {
+        var cardsContainer = document.getElementById('cardsContainer');
+        var products = cardsContainer.querySelectorAll('.card');
+
+        var minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
+        var maxPrice = parseFloat(document.getElementById('maxPrice').value) || Number.MAX_SAFE_INTEGER;
+
+        for (var i = 0; i < products.length; i++) {
+            var productPrice = parseFloat(products[i].querySelector('.price').innerText);
+            if (productPrice >= minPrice && productPrice <= maxPrice) {
+                products[i].style.display = 'block';
+            } else {
+                products[i].style.display = 'none';
+            }
+        }
+    }
+
+    function resetFilter() {
+        var cardsContainer = document.getElementById('cardsContainer');
+        var products = cardsContainer.querySelectorAll('.card');
+
+        for (var i = 0; i < products.length; i++) {
+            products[i].style.display = 'block';
+        }
+
+        document.getElementById('minPrice').value = '';
+        document.getElementById('maxPrice').value = '';
+    }
+</script>

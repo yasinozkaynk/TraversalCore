@@ -22,17 +22,24 @@ namespace TraversalCore.Areas.MemberArea.Controllers
     {
         IHolidayTourReservationService _reservationService;
         ICartService _cartService;
+        IUserCrediCartService _userCrediCartService;
+        private IHolidayTourService _holidayService;
         private ICartSessionService _cartSessionService;
 
         private readonly UserManager<AppUser> _userManager;
 
-        public ReservationController(IHolidayTourReservationService reservationService, UserManager<AppUser> userManager, ICartService cartService, ICartSessionService cartSessionService = null)
+        public ReservationController(IHolidayTourReservationService reservationService, UserManager<AppUser> userManager, ICartService cartService, ICartSessionService cartSessionService = null, IHolidayTourService holidayService = null, IUserCrediCartService userCrediCartService = null)
         {
             _reservationService = reservationService;
             _userManager = userManager;
             _cartService = cartService;
             _cartSessionService = cartSessionService;
+            _holidayService = holidayService;
+            _userCrediCartService = userCrediCartService;
         }
+
+
+
         public IActionResult Index()
         {
             var values = _userManager.GetUserAsync(HttpContext.User).Result;
@@ -42,6 +49,7 @@ namespace TraversalCore.Areas.MemberArea.Controllers
                 Name = values.Name,
                 Surname=values.SurName,
                 Cart = _cartSessionService.GetCart(),
+                UserCrediCart=_userCrediCartService.GetById(values.Id),
 
             };
             return View(model);
@@ -50,7 +58,6 @@ namespace TraversalCore.Areas.MemberArea.Controllers
         [HttpPost]
         public IActionResult AddReservation(HolidayTourReservation holidayTourReservation)
         {
-           
             _reservationService.Add(holidayTourReservation);
             return RedirectToAction("SuccessReservation");
         }
@@ -62,7 +69,12 @@ namespace TraversalCore.Areas.MemberArea.Controllers
 
         public IActionResult ReservationList()
         {
-            var result=_reservationService.GetAll();
+            var values = _userManager.GetUserAsync(HttpContext.User).Result;
+            var result = new ReservationListModel
+            {
+                holidayTourReservations = _reservationService.GetAllById(values.Id),
+                HolidayTours=_holidayService.GetAll(),
+            };
             return View(result);
         }
 

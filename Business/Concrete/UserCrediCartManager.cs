@@ -36,12 +36,21 @@ namespace Business.Concrete
 
         public UserCrediCart GetById(int id)
         {
-           return _userCrediCartDal.Get(x=>x.Id==id);
+           return _userCrediCartDal.Get(x=>x.UserId==id);
         }
 
         public void Update(UserCrediCart userCrediCart)
         {
             _userCrediCartDal.Update(userCrediCart);
+        }
+        public List<UserCrediCart> GetAllById(int id)
+        {
+            return _userCrediCartDal.GetAll(x=>x.UserId==id);
+        }
+
+        public UserCrediCart GetByElementId(int id)
+        {
+            return _userCrediCartDal.Get(x=>x.Id==id);
         }
     }
 }

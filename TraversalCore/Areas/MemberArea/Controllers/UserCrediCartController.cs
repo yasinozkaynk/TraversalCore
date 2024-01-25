@@ -3,6 +3,7 @@ using Core.Entities.Concrete;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using TraversalCore.Areas.MemberArea.Models;
 using TraversalCore.Models;
 
@@ -48,6 +49,20 @@ namespace TraversalCore.Areas.MemberArea.Controllers
         public IActionResult AddToCrediCart(UserCrediCart userCrediCart)
         {
             _userCrediCartService.Add(userCrediCart);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult UpdateCrediCart(  )
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult UpdateCrediCart(int id)
+        {
+            var result = _userCrediCartService.GetByElementId(id);
+            _userCrediCartService.Update(result);
             return RedirectToAction("Index");
         }
     }

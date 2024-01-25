@@ -2,7 +2,7 @@
 @model List<Ofer>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
 <div class="row">
@@ -22,39 +22,12 @@
                                 <img style="width:500px; height:350px;" class="img-responsive" src="@item.FirstImage" alt="">
                             </a>
                         </div>
-                        <h2 class="post-title"><a href="blog-single.html">@item.Title</a></h2>
                         <div class="post-content">
                             <a href="/Ofer/OferDetail/@item.Id" style="color: #004AAD" class="btn btn">Detayı Görüntüle</a>
                         </div>
                     </div>
                 </div>
             }
-
-        </div>
-        <div class="text-center">
-            <ul class="pagination post-pagination">
-                <li>
-                    <a href="blog-left-sidebar.html">Prev</a>
-                </li>
-                <li class="active">
-                    <a href="blog-left-sidebar.html">1</a>
-                </li>
-                <li>
-                    <a href="blog-left-sidebar.html">2</a>
-                </li>
-                <li>
-                    <a href="blog-left-sidebar.html">3</a>
-                </li>
-                <li>
-                    <a href="blog-left-sidebar.html">4</a>
-                </li>
-                <li>
-                    <a href="blog-left-sidebar.html">5</a>
-                </li>
-                <li>
-                    <a href="blog-left-sidebar.html">Next</a>
-                </li>
-            </ul>
         </div>
     </div>
 </div>

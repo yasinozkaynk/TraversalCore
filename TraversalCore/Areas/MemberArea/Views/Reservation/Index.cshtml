@@ -43,6 +43,10 @@
                                                     <a>Soyadınız</a>
                                                     <input type="text" name="Surname" value="@Model.Surname" id="input" class="form-control" />
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <a>Kart Bakiye</a>
+                                                    <input type="text" disabled name="Surname" value="@Model.UserCrediCart.AvailableBalance" id="input" class="form-control" />
+                                                </div>
                                             </div>
                                             <br />
                                         </div>
@@ -61,23 +65,23 @@
                                             <div class="row form-group">
                                                 <div class="col-md-6 ">
                                                     <a>Kart Üzerinde Yazan İsim Soyisim</a>
-                                                    <input disapled type="text" name="AppUserId" id="input" value="" class="form-control" />
+                                                    <input disabled type="text" value="@Model.UserCrediCart.Name" id="input" class="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col-md-6 ">
                                                     <a>Kart Numarası</a>
-                                                    <input disapled type="text" name="Name" id="input" value="" class="form-control" />
+                                                    <input disabled type="text" value="@Model.UserCrediCart.CartNumber" id="input" class="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col-md-6 ">
                                                     <a>CVV</a>
-                                                    <input disapled type="text" name="Name" id="input" value="" class="form-control" />
+                                                    <input disabled type="text" name="Name" id="input" value="@Model.UserCrediCart.CVV" class="form-control" />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <a>Son Kullanma Tarihi</a>
-                                                    <input type="date" name="Surname" value="" id="input" class="form-control" />
+                                                    <input type="text" name="Surname" data-date-format="DD MMMM YYYY" disabled value="@Model.UserCrediCart.ExpirationDate" id="input" class="form-control" />
                                                 </div>
                                             </div>
                                             @foreach (var item in Model.Cart.CartLines)
@@ -85,12 +89,22 @@
                                                 <div class="row form-group">
                                                     <div class="col-md-6">
                                                         <a>Tur Numarası</a>
-                                                        <input type="text" disabled name="HolidayTourId" value="@item.holidayTourCardDTOs.Id" id="input" class="form-control" />
+                                                        <input type="text"  name="HolidayTourId" value="@item.holidayTourCardDTOs.Id" id="input" class="form-control" />
                                                     </div>
                                                 </div>
                                             }
                                             <br />
-                                            <button type="submit" style="font-size:16px;color:white;background-color:red;width:400px;height:45px;font-family:'Times New Roman', Times, serif;position:relative; " class="btn btn-main text-center">Reservasyon Yap</button>
+                                            @if (Model.UserCrediCart.AvailableBalance>=Model.Cart.Total)
+                                            {
+                                                <button type="submit" style="font-size:16px;color:white;background-color:red;width:400px;height:45px;font-family:'Times New Roman', Times, serif;position:relative; " class="btn btn-main text-center">Reservasyon Yap</button>
+
+                                            }
+                                            else
+                                            {
+                                                <div style="position:relative;" class="alert tf-ion-alert-circled text-center  text-uppercase">
+                                                    <strong>Hata !</strong> Bakiye Yetersiz Lütfen Bakiye Yükleyiniz
+                                                </div>
+                                            }
 
                                         </div>
                                     </div>

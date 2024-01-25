@@ -13,6 +13,8 @@ namespace Business.Abstract
         void Delete(UserCrediCart userCrediCart);
         void Update(UserCrediCart userCrediCart);
         UserCrediCart GetById(int id);
+        UserCrediCart GetByElementId(int id);
+        List<UserCrediCart> GetAllById(int id);
         List<UserCrediCart> GetAll();
     }
 }

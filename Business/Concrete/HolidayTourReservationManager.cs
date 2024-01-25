@@ -33,6 +33,10 @@ namespace Business.Concrete
         {
             return _reservationDal.GetAll();
         }
+        public List<HolidayTourReservation> GetAllById(int id)
+        {
+            return _reservationDal.GetAll(x=>x.AppUserId==id);
+        }
 
         public HolidayTourReservation GetById(int id)
         {

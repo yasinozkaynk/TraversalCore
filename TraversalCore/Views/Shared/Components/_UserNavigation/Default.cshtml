@@ -4,63 +4,93 @@
 @{
     Layout = null;
 }
-    @if (!String.IsNullOrWhiteSpace(Model.UserName))
-    {
-        <li class="dropdown dropdown-slide">
 
-            <a class="dropdown-toggle text-uppercase" data-toggle="dropdown" data-hover="dropdown" style="font-family:'Times New Roman', Times, serif;font-weight:bold" data-delay="350"
-               role="button" aria-haspopup="true" aria-expanded="false">
-                @Model.UserName
-                <span class="tf-ion-ios-arrow-down"></span>
-            </a>
-            <div class="dropdown-menu">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <ul>
+<head>
+    <link href="~/css/updateProfile.css" rel="stylesheet" />
 
-                            @*<li class="dropdown-header" style="font-family: 'Times New Roman', Times, serif;font-size:18px;">
-                        <img style="height:50px;width:50px;border-radius:50px;position:relative;left:-10px;" src="@Model.ImageUrl" />
-                        @Model.Name @Model.Surname
-                        </li>*@
-                            <li><a href="/MemberArea/Profile/Index" style="font-family:'Times New Roman', Times, serif">Sepetim</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/MemberArea/Profile/Index" style="font-family:'Times New Roman', Times, serif">Profilim</a></li>
-                            <li role="separator" class="divider"></li>
+</head>
 
-                            <li><a href="/MemberArea/Profile/Index" style="font-family:'Times New Roman', Times, serif">Hesap Ayarları</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a asp-controller="Login" asp-action="Logoff" style="font-family:'Times New Roman', Times, serif">
-                                    Oturumu Kapat
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+@if (!String.IsNullOrWhiteSpace(Model.UserName))
+{
+    <li class="dropdown dropdown-slide">
 
+        <a class="dropdown-toggle text-uppercase" data-toggle="dropdown" data-hover="dropdown" style="font-family:'Times New Roman', Times, serif;font-weight:bold" data-delay="350"
+           role="button" aria-haspopup="true" aria-expanded="false">
+            @Model.UserName
+            <span class="tf-ion-ios-arrow-down"></span>
+        </a>
+        <div class="dropdown-menu">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <ul>
+
+                        @*<li class="dropdown-header" style="font-family: 'Times New Roman', Times, serif;font-size:18px;">
+                    <img style="height:50px;width:50px;border-radius:50px;position:relative;left:-10px;" src="@Model.ImageUrl" />
+                    @Model.Name @Model.Surname
+                    </li>*@
+                        <li><a href="/Cart/Index" style="font-family:'Times New Roman', Times, serif">Sepetim</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/MemberArea/Profile/Index" style="font-family:'Times New Roman', Times, serif">Profilim</a></li>
+                        <li role="separator" class="divider"></li>
+
+                        <li><a href="/MemberArea/Profile/Update" style="font-family:'Times New Roman', Times, serif">Hesap Ayarları</a></li>
+                        <li role="separator" class="divider"></li>
+                      @*   <li>
+                            <a asp-controller="Login" asp-action="Logoff" style="font-family:'Times New Roman', Times, serif">
+                                Oturumu Kapat
+                            </a>
+                        </li> *@
+                        <li>
+                            <a href="#myModal3" class="list-group-item list-group-item-action" style="font-family:'Times New Roman', Times, serif" data-toggle="modal">
+                                Oturumu Kapat
+                            </a>
+                        </li>
+                    </ul>
                 </div>
+
             </div>
-        </li>
-    }
-    else
-    {
-        <div style="position:relative;top:22px;" class="">
-            <b class="text-uppercase" style="font-family:'Times New Roman', Times, serif;font-weight:bold;"
-               role="button" aria-haspopup="true" aria-expanded="false">
-                <a href="/Login/SingIn"> Oturum Aç/</a>
-
-            </b>
-            <b class="text-uppercase" style="font-family:'Times New Roman', Times, serif;font-weight:bold;"
-               role="button" aria-haspopup="true" aria-expanded="false">
-                <a href="/Login/SingUp">
-                    Kaydol
-                </a>
-            </b>
         </div>
+    </li>
+}
+else
+{
+    <div style="position:relative;top:22px;" class="">
+        <b class="text-uppercase" style="font-family:'Times New Roman', Times, serif;font-weight:bold;"
+           role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="/Login/SingIn"> Oturum Aç/</a>
 
-    }
+        </b>
+        <b class="text-uppercase" style="font-family:'Times New Roman', Times, serif;font-weight:bold;"
+           role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="/Login/SingUp">
+                Kaydol
+            </a>
+        </b>
+    </div>
+
+}
 
 
 
-
+<div id="myModal3" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="tf tf-ion-android-close"></i>
+                </div>
+                <h4 class="modal-title">Emin misiniz?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Oturum Kapatılıyor !</p>
+            </div>
+            <div class="modal-footer">
+                <a style="background-color: gray; color: white; border: 1px solid #d4d2d2" class="btn btn-info" data-dismiss="modal">Kapat</a>
+                <a style="background-color:red;color:white;border:1px solid #d4d2d2;" href="/Login/LogOff" class="btn btn-danger">Çıkış Yap</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 

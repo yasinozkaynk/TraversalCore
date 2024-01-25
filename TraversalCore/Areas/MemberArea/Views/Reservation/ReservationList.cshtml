@@ -1,9 +1,43 @@
-﻿@using Entity.Concrete
-@model List<HolidayTourReservation>
+﻿@model TraversalCore.Areas.MemberArea.Models.ReservationListModel
 @{
     ViewData["Title"] = "ReservationList";
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
+@await Html.PartialAsync("/Views/MemberLayoutPartial/_NavbarPartial.cshtml")
 
-<h2>ReservationList</h2>
-
+<section class="user-dashboard page-wrapper" style="position:relative;top:-100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="dashboard-wrapper user-dashboard">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Otel/Tur</th>
+                                    <th>Rezervasyon Tarihi</th>
+                                    <th>Kişi Sayısı</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.holidayTourReservations)
+                                {
+                                    @foreach (var item2 in Model.HolidayTours.Where(x => x.Id == item.HolidayTourId))
+                                    {
+                                        <tr>
+                                            <td><img style="height:50px;width:50px;border-radius:30px;" src="@item2.Image"/> @item2.Title</td>
+                                            <td>@item.ReservationDate</td>
+                                            <td>@item.PersonCount</td>
+                                            <td><a href="/HolidayTour/HolidayTourDetail/@item2.Id" class="btn btn-default">Git</a></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
