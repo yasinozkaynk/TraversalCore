@@ -4,40 +4,109 @@
 
 @foreach (var item in Model.Category)
 {
-    <li class="dropdown dropdown-slide">
-        <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" style="font-family:'Times New Roman', Times, serif" data-delay="350"
-           role="button" aria-haspopup="true" aria-expanded="false">
-            @item.CategoryName <span class="tf-ion-ios-arrow-down"></span>
-        </a>
-        <div class="dropdown-menu">
-            <div class="row">
-                @foreach (var itemm in Model.Subheading.Where(x => x.CategoryId == item.Id))
-                {
-                    <div class="col-lg-4 col-md-6">
-                        <ul>
-                            <li class="dropdown-header" style="font-family: 'Times New Roman', Times, serif; color: #ff3131;font-size:15px;" >@itemm.SubheadingName</li>
-                            <li role="separator" class="divider"></li>
-                            @foreach (var subcategory in Model.Subcategory.Where(x => x.SubheadingId == itemm.Id))
-                            {
-                                @if (item.CategoryName == "Tur")
+    if (item.CategoryName == "Otel")
+    {
+        <li class="dropdown dropdown-slide">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" style="font-family:'Times New Roman', Times, serif" data-delay="350"
+               role="button" aria-haspopup="true" aria-expanded="false">
+                @item.CategoryName <span class="tf-ion-ios-arrow-down" style="color:red; font-weight:bold"></span>
+            </a>
+            <div class="dropdown-menu" style="width:700px;border-style:solid;border-width:3px 0px 0px 0px;border-color:red">
+                <div class="row">
+                    @foreach (var itemm in Model.Subheading.Where(x => x.CategoryId == item.Id))
+                    {
+                        <div class="col-lg-4 col-md-6">
+                            <ul>
+                                <li class="dropdown-header text-uppercase" style="font-family: 'Times New Roman', Times, serif; color: #ff3131;font-size:11px;font-weight:bold">@itemm.SubheadingName</li>
+                                <li role="separator" class="divider"></li>
+                                @foreach (var subcategory in Model.Subcategory.Where(x => x.SubheadingId == itemm.Id))
                                 {
-                                    <li><a style="font-family:'Times New Roman', Times, serif" href="/HolidayTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
+                                    @if (item.CategoryName == "Tur")
+                                    {
+                                        <li><a style="font-family:'Times New Roman', Times, serif" href="/HolidayTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
 
+                                    }
+                                    else
+                                    {
+                                        <li><a style="font-family:'Times New Roman', Times, serif" href="/HotelTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
+                                    }
                                 }
-                                else if (item.CategoryName == "Gemi")
-                                {
-                                    <li><a style="font-family:'Times New Roman', Times, serif" href="/ShipTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
-                                }
-                                else
-                                {
-                                    <li><a style="font-family:'Times New Roman', Times, serif" href="/HotelTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
-                                }
-                            }
-                        </ul>
+                            </ul>
+                        </div>
+
+                    }
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div style="border-radius:20px;background:url(https://www.odamax.com/omag/wp-content/uploads/2022/03/canakkale-gezilecek-yerler.jpg );background-repeat: no-repeat;  background-size: 200px 200px;width:200px;height:200px;padding:20px 20px;margin-top:20px;display:grid;">
+                                <h4 style="border-left: 5px solid #ff3131; border-radius: 5px; padding-left: 6px;height:30px;position:relative;top:130px;" class="card-text">
+                                    <a href="/HotelTour/Index/2" style="font-family: 'Franklin Gothic Medium';color:white;font-size:15px;"> Çanakkale Otelleri</a>
+                                </h4>
+                            </div>
+                        </div>
                     </div>
-                }
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div style="border-radius:20px;background:url(https://cdn2.setur.com.tr/image/hotel/large/grand-kartal-genel-61d71675-16b8-4c13-aa7e-20a44f393479.jpg);background-repeat: no-repeat;  background-size: 200px 200px;width:200px;height:200px;padding:20px 20px;margin-top:20px;display:grid;">
+                                <h4 style="border-left: 5px solid #ff3131; border-radius: 5px; padding-left: 6px;height:30px;position:relative;top:130px;" class="card-text">
+                                    <a href="/HotelTour/Index/8" style="font-family: 'Franklin Gothic Medium';color:white;font-size:15px;"> Doğa Otelleri</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div style="border-radius:20px;background:url(https://cdn2.setur.com.tr/image/tour/large/shutterstock218879665_284186.jpg);background-repeat: no-repeat;  background-size: 200px 200px;width:200px;height:200px;padding:20px 20px;margin-top:20px;display:grid;">
+                                <h4 style="border-left: 5px solid #ff3131; border-radius: 5px; padding-left: 6px;height:30px;position:relative;top:130px;" class="card-text">
+                                    <a href="/HotelTour/Index/31" style="font-family: 'Franklin Gothic Medium';color:white;font-size:15px;"> Kars Otelleri</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+    }
+    else
+    {
+        <li class="dropdown dropdown-slide">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" style="font-family:'Times New Roman', Times, serif" data-delay="350"
+               role="button" aria-haspopup="true" aria-expanded="false">
+                @item.CategoryName <span class="tf-ion-ios-arrow-down" style="color:red; font-weight:bold"></span>
+            </a>
+            <div class="dropdown-menu" style="width:1000px;border-style:solid;border-width:3px 0px 0px 0px;border-color:red">
+                <div class="row">
+                    @foreach (var itemm in Model.Subheading.Where(x => x.CategoryId == item.Id))
+                    {
+                        <div class="col-sm-3 col-xs-12">
+                            <ul>
+                                <li class="dropdown-header" style="font-family: 'Times New Roman', Times, serif; color: #ff3131;font-size:15px;">@itemm.SubheadingName</li>
+                                <li role="separator" class="divider"></li>
+                                @foreach (var subcategory in Model.Subcategory.Where(x => x.SubheadingId == itemm.Id))
+                                {
+                                    @if (item.CategoryName == "Tur")
+                                    {
+                                        <li><a style="font-family:'Times New Roman', Times, serif" href="/HolidayTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
+
+                                    }
+                                    else
+                                    {
+                                        <li><a style="font-family:'Times New Roman', Times, serif" href="/HotelTour/Index/@subcategory.Id">@subcategory.CategoryName</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+                    }
+                    <div class="col-sm-3 col-xs-12">
+                        <a href="shop.html">
+                            <img class="img-responsive" style="height:250px;width:500px;margin-top:5px;" src="https://cdn2.setur.com.tr/image/tour/large/kultur-yurt-ici-paket-turlar-bb651d20-be69-49b2-81e8-8904808654c3.jpg" alt="menu image" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+
 }
 

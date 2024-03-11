@@ -1,20 +1,179 @@
-﻿<div class="col-md-3">
+﻿
+<style>
+
+    #inputFilter {
+        background-color: white;
+        height: 50px;
+        width: 240px;
+        padding: 10px 10px;
+        border-radius: 5px;
+        border: 2px solid #e1dbdb;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 17px;
+        margin: 5px;
+        margin-left:10px;
+    }
+
+    #minPrice {
+        background-color: white;
+        height: 50px;
+        border: 2px solid #e1dbdb;
+        width: 115px;
+        padding: 10px 10px;
+        border-radius: 5px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 17px;
+        margin-left: 10px;
+    }
+
+    #maxPrice {
+        background-color: white;
+        height: 50px;
+        width: 115px;
+        border: 2px solid #e1dbdb;
+        padding: 10px 10px;
+        border-radius: 5px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 17px;
+        margin: 5px;
+    }
+
+    .buttonara {
+        background-color: white;
+        border: solid red;
+        color: red;
+        top: 10px;
+        width: 240px;
+        position: relative;
+        height: 50px;
+        padding: 5px;
+        margin-left: 10px;
+    }
+
+        .buttonara:hover {
+            background-color: #ff3131;
+            box-shadow: 0px 0px 10px red;
+            color: white;
+        }
+
+    .buttonsil {
+        background-color: white;
+        border: 1px solid red;
+        color: red;
+        position: relative;
+        padding: 5px;
+        font-size:18px;
+        width: 262px;
+        height: 60px;
+        margin-bottom: 10px;
+        box-shadow: 0px 0px 2px red;
+    }
+</style>
+
+
+<div class="col-md-3">
+
     <div class="widget product-category">
         <div class="panel-group commonAccordion">
             <div class="panel panel-default">
-                <div class="card" id="fillter">
+                <div class="card" style="height:165px;">
                     <h4 class="panel-title">
                         <a style="font-family: 'Times New Roman', Times, serif; font-weight: bold">
                             Otel Adı
                         </a>
                     </h4>
-                    <input id="inputFilter" placeholder="arayın..." type="text" /><br />
-                 
+                    <input id="inputFilter" placeholder="Otel adı ile arayın..." type="text" /><br />
+                    <button style="border:1px solid red;" class="buttonara" onclick="filterByPrice()">Ara</button>
+
                 </div>
             </div>
         </div>
+
+        <div class="panel-group commonAccordion">
+            <div class="panel panel-default">
+                <div class="card" style="height:165px;">
+                    <h4 class="panel-title">
+                        <a style="font-family: 'Times New Roman', Times, serif; font-weight: bold">
+                            Konaklama Fiyatı
+                        </a>
+                        <input type="text" id="minPrice" placeholder="Min Fiyat..." />
+                        <input type="text" id="maxPrice" placeholder="Max Fiyat..." />
+
+                        <button style="border:1px solid red;" class="buttonara" onclick="filterByPrice()">Ara</button>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <button class="buttonsil" onclick="resetFilter()"><b>Tüm Filtreleri Temizle</b> </button>
     </div>
 </div>
-<script>
 
+
+<script>
+    $(function () {
+        $("#inputFilter").on("keyup", function () {
+            var name = $(this).val().toLowerCase();
+            $("#aaa ").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(name) > -1);
+            });
+        });
+    });
+
+    function sortAscending() {
+        let prices = getHotelPrices();
+        prices.sort((a, b) => a - b);
+        updateUIWithSortedPrices(prices);
+    }
+
+    function sortDescending() {
+        let prices = getHotelPrices();
+        prices.sort((a, b) => b - a);
+        updateUIWithSortedPrices(prices);
+    }
+
+    function getHotelPrices() {
+        let priceElements = document.querySelectorAll('.price-details h3');
+        let prices = Array.from(priceElements).map(element => {
+            return parseInt(element.innerText.trim());
+        });
+        return prices;
+    }
+
+    function updateUIWithSortedPrices(prices) {
+        let priceElements = document.querySelectorAll('.price');
+        prices.forEach((price, index) => {
+            priceElements[index].innerText = price + ' TL';
+        });
+    }
+
+
+    function filterByPrice() {
+        var cardsContainer = document.getElementById('cardsContainer');
+        var products = cardsContainer.querySelectorAll('.card');
+
+        var minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
+        var maxPrice = parseFloat(document.getElementById('maxPrice').value) || Number.MAX_SAFE_INTEGER;
+
+        for (var i = 0; i < products.length; i++) {
+            var productPrice = parseFloat(products[i].querySelector('.price').innerText);
+            if (productPrice >= minPrice && productPrice <= maxPrice) {
+                products[i].style.display = 'block';
+            } else {
+                products[i].style.display = 'none';
+            }
+        }
+    }
+
+    function resetFilter() {
+        var cardsContainer = document.getElementById('cardsContainer');
+        var products = cardsContainer.querySelectorAll('.card');
+
+        for (var i = 0; i < products.length; i++) {
+            products[i].style.display = 'block';
+        }
+
+        document.getElementById('minPrice').value = '';
+        document.getElementById('maxPrice').value = '';
+    }
 </script>
+
