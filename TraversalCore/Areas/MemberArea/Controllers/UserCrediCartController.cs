@@ -10,8 +10,7 @@ using TraversalCore.Models;
 namespace TraversalCore.Areas.MemberArea.Controllers
 {
     [Area("MemberArea")]
-    [Route("MemberArea/[controller]/[action]")]
-
+    [Route("MemberArea/UserCrediCart")]
     public class UserCrediCartController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -21,10 +20,12 @@ namespace TraversalCore.Areas.MemberArea.Controllers
             _userManager = userManager;
             _userCrediCartService = userCrediCartService;
         }
+
+        [Route("Index")]
         public IActionResult Index()
         {
             var values = _userManager.GetUserAsync(HttpContext.User).Result;
-
+      
             UserCrediCartViewModel model = new UserCrediCartViewModel()
             {
                 Id = values.Id,
@@ -37,17 +38,20 @@ namespace TraversalCore.Areas.MemberArea.Controllers
             };
             return View(model);
         }
-
+        [Route("RemoveToCrediCart/{id}")]
         public IActionResult RemoveToCrediCart(int id)
         {
-            var result = _userCrediCartService.GetById(id);
+            var result = _userCrediCartService.GetByElementId(id);
             _userCrediCartService.Delete(result);
-            return RedirectToAction("Index","UserCrediCart");
+            return RedirectToAction("Index");
         }
 
+        [Route("Index")]
         [HttpPost]
         public IActionResult AddToCrediCart(UserCrediCart userCrediCart)
         {
+            var values = _userManager.FindByNameAsync(User.Identity.Name).Result;
+            userCrediCart.UserId = values.Id;
             _userCrediCartService.Add(userCrediCart);
             return RedirectToAction("Index");
         }

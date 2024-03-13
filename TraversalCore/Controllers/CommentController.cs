@@ -19,11 +19,13 @@ namespace TraversalCore.UI.Controllers
         {
             _commentService = commentService;
         }
+
         [HttpGet]
         public PartialViewResult AddComment()
         {
             return PartialView();
         }
+
         [HttpPost]
         public IActionResult AddComment(Comment comment)
         {

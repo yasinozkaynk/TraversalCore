@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace TraversalCore.ViewComponets.HotelDetail
 {
-    public class _TrendHotels : ViewComponent
+    public class _TrendTours : ViewComponent
     {
-        IHotelTourService  _hotelTourService;
+        IHolidayTourService _holidayTourService;
 
-        public _TrendHotels(IHotelTourService hotelTourService)
+        public _TrendTours(IHolidayTourService holidayTourService)
         {
-            _hotelTourService = hotelTourService;
+            _holidayTourService = holidayTourService;
         }
 
         public IViewComponentResult Invoke()
         {
-            var result = _hotelTourService.GetAll();
+            var result = _holidayTourService.GetAll();
             return View(result);
         }
     }

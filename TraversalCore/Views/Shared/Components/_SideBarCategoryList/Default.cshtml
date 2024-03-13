@@ -11,7 +11,7 @@
         font-family: 'Times New Roman', Times, serif;
         font-size: 17px;
         margin: 5px;
-        margin-left:10px;
+        margin-left: 10px;
     }
 
     #minPrice {
@@ -62,7 +62,7 @@
         color: red;
         position: relative;
         padding: 5px;
-        font-size:18px;
+        font-size: 18px;
         width: 262px;
         height: 60px;
         margin-bottom: 10px;
@@ -79,11 +79,11 @@
                 <div class="card" style="height:165px;">
                     <h4 class="panel-title">
                         <a style="font-family: 'Times New Roman', Times, serif; font-weight: bold">
-                            Otel Adı
+                            Tur Adı
                         </a>
                     </h4>
                     <input id="inputFilter" placeholder="Otel adı ile arayın..." type="text" /><br />
-                    <button style="border:1px solid red;" class="buttonara" onclick="filterByPrice()">Ara</button>
+                    <button style="border:1px solid red;" class="buttonara" onclick="filterByTour()">Ara</button>
 
                 </div>
             </div>
@@ -110,58 +110,82 @@
 
 
 <script>
-    $(function () {
-        $("#inputFilter").on("keyup", function () {
-            var name = $(this).val().toLowerCase();
-            $("#aaa ").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(name) > -1);
-            });
-        });
-    });
+    function filterByTour() {
+        var input = document.getElementById("inputFilter").value.toUpperCase();
+        var cards = document.getElementsByClassName("card");
+
+        for (var i = 0; i < cards.length; i++) {
+            var titleElement = cards[i].getElementsByClassName("card-title")[0];
+            if (titleElement) {
+                var title = titleElement.innerText.toUpperCase();
+                if (title.indexOf(input) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    }
 
     function sortAscending() {
-        let prices = getHotelPrices();
-        prices.sort((a, b) => a - b);
-        updateUIWithSortedPrices(prices);
+        var cardsContainer = document.getElementById("cardsContainer");
+        var cards = Array.from(cardsContainer.getElementsByClassName("card"));
+
+        var sortedCards = cards.sort(function (a, b) {
+            var priceA = parseFloat(a.querySelector(".price").innerText);
+            var priceB = parseFloat(b.querySelector(".price").innerText);
+            return priceA - priceB;
+        });
+
+        for (var i = 0; i < sortedCards.length; i++) {
+            cardsContainer.appendChild(sortedCards[i]);
+        }
+    }
+
+    function sortAscending() {
+        var cardsContainer = document.getElementById("cardsContainer");
+        var cards = Array.from(cardsContainer.getElementsByClassName("card"));
+
+        var sortedCards = cards.sort(function (a, b) {
+            var priceA = parseFloat(a.querySelector(".price").innerText);
+            var priceB = parseFloat(b.querySelector(".price").innerText);
+            return priceA - priceB;
+        });
+
+        // Önceki kartları temizle
+        while (cardsContainer.firstChild) {
+            cardsContainer.removeChild(cardsContainer.firstChild);
+        }
+
+        // Sıralı kartları ekleyin ve aralarına boşluk bırakın
+        sortedCards.forEach(function (card) {
+            cardsContainer.appendChild(card);
+            // Boşluk ekleyin
+            cardsContainer.appendChild(document.createElement('br'));
+        });
     }
 
     function sortDescending() {
-        let prices = getHotelPrices();
-        prices.sort((a, b) => b - a);
-        updateUIWithSortedPrices(prices);
-    }
+        var cardsContainer = document.getElementById("cardsContainer");
+        var cards = Array.from(cardsContainer.getElementsByClassName("card"));
 
-    function getHotelPrices() {
-        let priceElements = document.querySelectorAll('.price-details h3');
-        let prices = Array.from(priceElements).map(element => {
-            return parseInt(element.innerText.trim());
+        var sortedCards = cards.sort(function (a, b) {
+            var priceA = parseFloat(a.querySelector(".price").innerText);
+            var priceB = parseFloat(b.querySelector(".price").innerText);
+            return priceB - priceA;
         });
-        return prices;
-    }
 
-    function updateUIWithSortedPrices(prices) {
-        let priceElements = document.querySelectorAll('.price');
-        prices.forEach((price, index) => {
-            priceElements[index].innerText = price + ' TL';
-        });
-    }
-
-
-    function filterByPrice() {
-        var cardsContainer = document.getElementById('cardsContainer');
-        var products = cardsContainer.querySelectorAll('.card');
-
-        var minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
-        var maxPrice = parseFloat(document.getElementById('maxPrice').value) || Number.MAX_SAFE_INTEGER;
-
-        for (var i = 0; i < products.length; i++) {
-            var productPrice = parseFloat(products[i].querySelector('.price').innerText);
-            if (productPrice >= minPrice && productPrice <= maxPrice) {
-                products[i].style.display = 'block';
-            } else {
-                products[i].style.display = 'none';
-            }
+        // Önceki kartları temizle
+        while (cardsContainer.firstChild) {
+            cardsContainer.removeChild(cardsContainer.firstChild);
         }
+
+        // Sıralı kartları ekleyin ve aralarına boşluk bırakın
+        sortedCards.forEach(function (card) {
+            cardsContainer.appendChild(card);
+            // Boşluk ekleyin
+            cardsContainer.appendChild(document.createElement('br'));
+        });
     }
 
     function resetFilter() {
@@ -174,6 +198,7 @@
 
         document.getElementById('minPrice').value = '';
         document.getElementById('maxPrice').value = '';
+        document.getElementById('inputFilter').value = '';
     }
 </script>
 

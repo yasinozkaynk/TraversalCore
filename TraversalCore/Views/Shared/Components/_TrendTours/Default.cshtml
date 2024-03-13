@@ -1,13 +1,13 @@
 ﻿@using Entity.Concrete
-@model List<HotelTour>
+@model List<HolidayTour>
 
 <section class="products related-products section" style="position:relative;top:-70px;">
     <div class="container">
         <div class="row">
             <div class="title text">
-                <h1 style="color: #ff3131; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Öne Çıkan Otelleri</h1>
+                <h1 style="color: #ff3131; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Öne Çıkan Turlar</h1>
                 <a class="text-left link link-danger" style="color: #ff3131; font-family: 'Franklin Gothic Medium'" href="/Ofer/Index">
-                    Tüm Otelleri Gör <i class="tf-ion-arrow-right-a"></i>
+                    Tüm Turları Gör <i class="tf-ion-arrow-right-a"></i>
                 </a>
             </div>
         </div>
@@ -16,15 +16,15 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     @foreach (var item in Model)
                     {
-                        @if (item.Status == true)
+                        @if (item.PopularStatus == true)
                         {
                             <div class="col-md-4">
                                 <div class="card">
-                                    <div  style="border-radius:20px;background-image:url(@item.Image1);width:370px;height:400px;padding:20px 20px;margin-bottom:20px;display:grid;">
-                                        <h2 class="card-title"><a style="font-family: 'Franklin Gothic Medium';color:white">@item.City</a></h2>
+                                    <div  style="border-radius:20px;background-image:url(@item.Image);width:370px;height:400px;padding:20px 20px;margin-bottom:20px;display:grid;">
+                                        <h2 class="card-title"><a style="font-family: 'Franklin Gothic Medium';color:white">@item.Subtitle</a></h2>
                                         <h4 style="border-left: 5px solid #ff3131; border-radius: 5px; padding-left: 6px;height:50px;position:relative;top:100px;" class="card-text">
-                                            <a href="/HotelTour/HotelTourDetail/@item.Id" style="font-family: 'Franklin Gothic Medium';color:white"> @item.HotelName</a> <br />
-                                            <a href="/HotelTour/HotelTourDetail/@item.Id" style="font-family: 'Franklin Gothic Medium';color:white;font-size:25px;"> @item.Price ₺'<span style="font-size:15px;">den başlayan fiyatlarla</span></a>
+                                            <a href="/HolidayTour/HolidayTourDetail/@item.Id" style="font-family: 'Franklin Gothic Medium';color:white"> @item.Title</a> <br />
+                                            <a href="/HolidayTour/HolidayTourDetail/@item.Id" style="font-family: 'Franklin Gothic Medium';color:white;font-size:25px;"> @item.Price ₺'<span style="font-size:15px;">den başlayan fiyatlarla</span></a>
                                         </h4>
                                     </div>
                                 </div>

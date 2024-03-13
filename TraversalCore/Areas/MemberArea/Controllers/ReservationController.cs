@@ -17,7 +17,6 @@ namespace TraversalCore.Areas.MemberArea.Controllers
 {
     [Area("MemberArea")]
     [Route("MemberArea/[controller]/[action]")]
-
     public class ReservationController : Controller
     {
         IHolidayTourReservationService _reservationService;
@@ -47,11 +46,20 @@ namespace TraversalCore.Areas.MemberArea.Controllers
             {
                 AppUserId = values.Id,
                 Name = values.Name,
-                Surname=values.SurName,
+                Surname = values.SurName,
                 Cart = _cartSessionService.GetCart(),
-                UserCrediCart=_userCrediCartService.GetById(values.Id),
+                UserCrediCart = _userCrediCartService.GetById(values.Id),
 
             };
+
+
+            if (model.UserCrediCart == null || model.Cart.Total <= 0)
+            {
+                TempData["error"] = "Lütfen Bir Kart Ekleyin !";
+                return RedirectToAction("Index", "UserCrediCart");
+            }
+
+
             return View(model);
         }
 
@@ -73,7 +81,7 @@ namespace TraversalCore.Areas.MemberArea.Controllers
             var result = new ReservationListModel
             {
                 holidayTourReservations = _reservationService.GetAllById(values.Id),
-                HolidayTours=_holidayService.GetAll(),
+                HolidayTours = _holidayService.GetAll(),
             };
             return View(result);
         }

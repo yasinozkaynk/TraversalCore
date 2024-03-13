@@ -78,7 +78,12 @@
         }
 
 </style>
-
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger text-center  text-uppercase">
+        <strong>Hata !</strong> @TempData["error"]
+    </div>
+}
 <section style="position:relative;top:30px;">
     <div class="container">
         <div class="row">
@@ -192,12 +197,18 @@
                     <div class="row form-group">
                         <div class="col-md-7">
                             @Html.Label("Son Kullanma Tarihi")
-                            @Html.TextBoxFor(x => x.userCrediCart.ExpirationDate, new { @class = "form-control", @type = "datetime", @id = "input" })
+                            @Html.TextBoxFor(x => x.userCrediCart.ExpirationDate, new { @class = "form-control", @type = "date", @id = "input" })
 
                         </div>
                         <div class="col-md-5">
                             @Html.Label("CVV")
                             @Html.TextBoxFor(x => x.userCrediCart.CVV, new { @class = "form-control", @type = "text", @id = "input" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-7">
+                            @Html.Label("Eklenecek Tutar")
+                            @Html.TextBoxFor(x => x.userCrediCart.AvailableBalance, new { @class = "form-control", @type = "text", @id = "input" })
                         </div>
                     </div>
                     <br />

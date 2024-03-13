@@ -3,17 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCore.ViewComponets.HotelDetail
 {
-    public class _MostPreferredHotels:ViewComponent
+    public class _MostPreferredTours:ViewComponent
     {
-        IHotelTourService _hotelTourService;
+        IHolidayTourService _holidayTourService;
 
-        public _MostPreferredHotels(IHotelTourService hotelTourService)
+        public _MostPreferredTours(IHolidayTourService holidayTourService)
         {
-            _hotelTourService = hotelTourService;
+            _holidayTourService = holidayTourService;
         }
+
         public IViewComponentResult Invoke()
         {
-            var result = _hotelTourService.GetAll();
+            var result = _holidayTourService.GetAll();
             return View(result);
         }
     }

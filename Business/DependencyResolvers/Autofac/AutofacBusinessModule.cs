@@ -61,12 +61,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<HolidayTourManager>().As<IHolidayTourService>().SingleInstance();
             builder.RegisterType<EfHoildayTourDal>().As<IHoildayTourDal>().SingleInstance();
 
-            builder.RegisterType<HotelTourManager>().As<IHotelTourService>().SingleInstance();
-            builder.RegisterType<EfHotelTourDal>().As<IHotelTourDal>().SingleInstance();
-
-            builder.RegisterType<HotelTourDetailManager>().As<IHotelTourDetailService>().SingleInstance();
-            builder.RegisterType<EfHotelTourDetailDal>().As<IHotelTourDetailDal>().SingleInstance();
-
             builder.RegisterType<HolidayTourDetailManager>().As<IHolidayTourDetailService>().SingleInstance();
             builder.RegisterType<EfHolidayTourDetailDal>().As<IHolidayTourDetailDal>().SingleInstance();
 
